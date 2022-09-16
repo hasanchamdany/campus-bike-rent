@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv/config')
 
 //import routes
-const bikeRoutes = require(`./routes/bike`)
+const bikeRoutes = require(`./src/routes/bike`)
 
 //Routes 
 app.get('/', (req, res) => {
