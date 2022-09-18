@@ -6,10 +6,22 @@ const bikeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
+  location: {
+    type: String,
+    required: true,
+  },
+  availability: {
+    type: Boolean,
+    required: true,
+  },
+  borrowPeriod: {
+    type: BigInt,
+    required: true,
+  },
+  condition: {
     type: String,
     required: true,
   },
 });
 
-export default mongoose.model('Bike', bikeSchema);
+export default mongoose.model("Bike", bikeSchema);
