@@ -6,9 +6,19 @@ const router = express.Router()
 
 
 //Create
-router.post('/:id?', controller.create)
+router.post('/', controller.create)
 
 //Update
+router.put('/:id', controller.updateById)
+
+//Delete
+router.delete('/:id', controller.deleteById)
+
+//findById
+router.get("/:id", controller.findById)
+
+//findAll
+router.get("/", controller.findAll)
 
 router.get('/', async (req, res) => {
     res.send("hello this is bike router endpoint!")

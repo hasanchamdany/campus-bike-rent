@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv/config';
-import bikeRoutes from './src/routes/bike.js';
+import bikeRoutes from './src/routes/bikes.js';
 import config from 'config';
 
 
