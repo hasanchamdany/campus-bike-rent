@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const bikeSchema = new mongoose.Schema({
-  ID: {
-    type: String,
-    required: true,
-  },
+  // ID: {
+  //   type: String,
+  //   required: true,
+  // },
   location: {
     type: String,
     required: true,
@@ -15,7 +15,7 @@ const bikeSchema = new mongoose.Schema({
     required: true,
   },
   borrowPeriod: {
-    type: BigInt,
+    type: String,
     required: true,
   },
   condition: {
