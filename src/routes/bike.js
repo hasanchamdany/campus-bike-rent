@@ -1,21 +1,14 @@
 import express from 'express';
-import Bike from "../models/Bike.js"
+import Bike from "../models/Bike.js";
+import * as controller from "../controller/bikeController.js";
 // const express = require('express');
 const router = express.Router()
 
 
 //Create
-router.post('/', async (req, res) => {
+router.post('/:id?', controller.create)
 
-    const newBike = new Bike(req.body)
-    res.send("Hello this is bike endpoint!")
-    try {
-        const savedBike = await  newBike.save()
-        res.status(200).json(savedBike)
-    }catch(err) {
-        res.status(500).json(err)
-    }
-})
+//Update
 
 router.get('/', async (req, res) => {
     res.send("hello this is bike router endpoint!")

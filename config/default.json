@@ -3,8 +3,8 @@
     "campus-bike-rent": {
       "dbConfig": {
         "host": "localhost",
-        "port": 5984,
-        "dbName": "mongodb+srv://paw5:paw5@cluster0.1mmny7r.mongodb.net/?retryWrites=true&w=majority"
+        "port": 3000,
+        "dbName": "mongodb+srv://paw5:paw5@cluster0.1mmny7r.mongodb.net/campus-bike-rent?retryWrites=true&w=majority"
       }
     }
   }
