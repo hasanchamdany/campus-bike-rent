@@ -30,6 +30,7 @@ npm add dotenv
 <br>DB_CONNECTON: mongodb+srv://paw5:paw5@cluster0.1mmny7r.mongodb.net/?retryWrites=true&w=majority
 
 # Run
+Command untuk run dev script yang didefinisikan di package. json file dalam project.
 ```
 npm run dev
 ```
