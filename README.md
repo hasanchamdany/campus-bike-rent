@@ -23,3 +23,10 @@ npm add mongoose
 npm add dotenv
 ```
 
+# Setting .env file:
+- Buat file dengan nama ".env" dalam folder campus-bike-rent di local repository
+- Isi file:
+<br>PORT: 3000 
+<br>DB_CONNECTON: mongodb+srv://paw5:paw5@cluster0.1mmny7r.mongodb.net/?retryWrites=true&w=majority
+
+
