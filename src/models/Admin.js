@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const AdminSchema = new mongoose.Schema({
-  idAdmin: {
-    type: String,
-    required: true,
-  },
+const adminSchema = new mongoose.Schema({
+  // idAdmin: {
+  //   type: String,
+  //   required: true,
+  // },
   fullName: {
     type: String,
     required: true,
@@ -24,4 +24,4 @@ const AdminSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Admin", AdminSchema);
+export default mongoose.model("Admin", adminSchema);
