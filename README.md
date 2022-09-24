@@ -29,4 +29,8 @@ npm add dotenv
 <br>PORT: 3000 
 <br>DB_CONNECTON: mongodb+srv://paw5:paw5@cluster0.1mmny7r.mongodb.net/?retryWrites=true&w=majority
 
+# Run
+```
+npm run dev
+```
 
