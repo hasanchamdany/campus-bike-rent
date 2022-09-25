@@ -2,10 +2,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const memberSchema = new mongoose.Schema({
-  niu: {
-    type: String,
-    required: true,
-  },
+  // niu: {
+  //   type: String,
+  //   required: true,
+  // },
   name: {
     type: String,
     required: true,

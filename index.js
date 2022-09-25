@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv/config";
 import bikeRoutes from "./src/routes/bikes.js";
 import adminRoutes from "./src/routes/admins.js";
+import memberRoutes from "./src/routes/members.js"
 import config from "config";
 
 // const express = require('express');
@@ -53,6 +54,8 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use("/bike", bikeRoutes);
 app.use("/admin", adminRoutes);
+app.use("/member", memberRoutes);
+
 
 //listen
 app.listen(process.env.PORT, () => {

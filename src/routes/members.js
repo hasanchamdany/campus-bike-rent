@@ -1,18 +1,26 @@
-const express = require('express');
-const router = express.Router()
+import express from "express";
+import Member from "../models/Member.js";
+import * as controller from "../controller/memberController.js";
+// const express = require('express');
+const router = express.Router();
 
-//CREATE
-router.post('/', (req, res) => {
-    res.send("Member Routes test endpoint")
-})
+//Create
+router.post("/", controller.create);
 
-//UPDATE
+//Update
+router.put("/:id", controller.updateById);
 
-//DELETE
+//Delete
+router.delete("/:id", controller.deleteById);
 
-//GET
+//findById
+router.get("/:id", controller.findById);
 
-//GETALL
+//findAll
+router.get("/", controller.findAll);
 
+router.get("/", async (req, res) => {
+  res.send("hello this is member router endpoint!");
+});
 
-module.exports = router
+export default router;
