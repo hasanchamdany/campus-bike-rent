@@ -2,7 +2,19 @@
 Tugas Pengembangan Aplikasi web
 
 # Package included:
+- install npm
+```
+npm install
+```
+- install config
+```
+npm add config
+```
 - install express
+```
+npm install express
+```
+- add express
 ```
 npm add express
 ```
