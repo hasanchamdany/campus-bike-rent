@@ -4,6 +4,7 @@ import dotenv from "dotenv/config";
 import bikeRoutes from "./src/routes/bikes.js";
 import adminRoutes from "./src/routes/admins.js";
 import memberRoutes from "./src/routes/members.js"
+import bookingRoutes from "./src/routes/bookings.js";
 import config from "config";
 
 // const express = require('express');
@@ -55,6 +56,7 @@ app.use(express.json());
 app.use("/bike", bikeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/member", memberRoutes);
+app.use("/booking", bookingRoutes);
 
 
 //listen
