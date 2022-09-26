@@ -13,8 +13,9 @@ const memberSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
-  pass: {
+  password: {
     type: String,
     required: true,
   },
@@ -22,6 +23,12 @@ const memberSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  }
+},
+  {timestamps:true}
+);
 
 export default mongoose.model("Member", memberSchema);
