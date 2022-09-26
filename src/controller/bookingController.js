@@ -2,7 +2,7 @@ import express from 'express';
 import Booking from "../models/Booking.js"
 
 //Create 
-export const create = async (req, res, next) => {
+export const createBooking = async (req, res, next) => {
     const newBooking = new Booking(req.body)
     // res.send("Hello this is Booking endpoint!")
     try {
@@ -14,7 +14,7 @@ export const create = async (req, res, next) => {
 }
 
 //update
-export const updateById = async (req, res, next) => {
+export const updateBookingById = async (req, res, next) => {
     try {
         const updatedBooking = await  Booking.findByIdAndUpdate(req.params.id, { $set: req.body}, {new: true})
         res.status(200).json(updatedBooking)
@@ -24,7 +24,7 @@ export const updateById = async (req, res, next) => {
 }
 
 //delete
-export const deleteById = async (req, res, next) => {
+export const deleteBookingById = async (req, res, next) => {
     try {
         await  Booking.deleteOne({_id: req.params.id})
         res.status(200).json("Booking has been deleted.")
@@ -34,7 +34,7 @@ export const deleteById = async (req, res, next) => {
 }
 
 //findById
-export const findById = async (req, res, next) => {
+export const findBookingById = async (req, res, next) => {
     try {
         const Booking = await  Booking.findById(req.params.id)
         res.status(200).json(Booking)
@@ -44,7 +44,7 @@ export const findById = async (req, res, next) => {
 }
 
 //findAll
-export const findAll = async (req, res, next) => {
+export const findAllBookings = async (req, res, next) => {
     try {
         const Bookings = await  Booking.find()
         res.status(200).json(Bookings)

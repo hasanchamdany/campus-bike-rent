@@ -2,7 +2,7 @@ import express from "express";
 import Admin from "../models/Admin.js";
 
 //Create
-export const create = async (req, res, next) => {
+export const createAdmin = async (req, res, next) => {
   const newAdmin = new Admin(req.body);
   // res.send("Hello this is admin endpoint!")
   try {
@@ -14,7 +14,7 @@ export const create = async (req, res, next) => {
 };
 
 //update
-export const updateById = async (req, res, next) => {
+export const updateAdminById = async (req, res, next) => {
   try {
     const updatedAdmin = await Admin.findByIdAndUpdate(
       req.params.id,
@@ -28,7 +28,7 @@ export const updateById = async (req, res, next) => {
 };
 
 //delete
-export const deleteById = async (req, res, next) => {
+export const deleteAdminById = async (req, res, next) => {
   try {
     await Admin.deleteOne({ _id: req.params.id });
     res.status(200).json("Admin has been deleted.");
@@ -38,7 +38,7 @@ export const deleteById = async (req, res, next) => {
 };
 
 //findById
-export const findById = async (req, res, next) => {
+export const findAdminById = async (req, res, next) => {
   try {
     const admin = await Admin.findById(req.params.id);
     res.status(200).json(admin);
@@ -48,7 +48,7 @@ export const findById = async (req, res, next) => {
 };
 
 //findAll
-export const findAll = async (req, res, next) => {
+export const findAllAdmins = async (req, res, next) => {
   try {
     const admins = await Admin.find();
     res.status(200).json(admins);
