@@ -8,7 +8,7 @@ const bookingSchema = new mongoose.Schema({
     required: true,
   },
   tanggal: {
-    type: String,
+    type: Date,
     required: true,
   },
   jam: {
