@@ -5,19 +5,19 @@ import * as controller from "../controller/adminController.js";
 const router = express.Router();
 
 //Create
-router.post("/", controller.create);
+router.post("/", controller.createAdmin);
 
 //Update
-router.put("/:id", controller.updateById);
+router.put("/:id", controller.updateAdminById);
 
 //Delete
-router.delete("/:id", controller.deleteById);
+router.delete("/:id", controller.deleteAdminById);
 
 //findById
-router.get("/:id", controller.findById);
+router.get("/:id", controller.findAdminById);
 
 //findAll
-router.get("/", controller.findAll);
+router.get("/", controller.findAllAdmins);
 
 router.get("/", async (req, res) => {
   res.send("hello this is admin router endpoint!");
