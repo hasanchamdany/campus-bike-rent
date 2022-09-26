@@ -34,6 +34,18 @@ npm add mongoose
 ```
 npm add dotenv
 ```
+- install JWT
+```
+npm add jsonwebtoken
+```
+- install bcryptjs
+```
+npm add bcryptjs
+```
+- install cookie-parser
+```
+npm add cookie-parser
+```
 
 # Setting .env file:
 - Buat file dengan nama ".env" dalam folder campus-bike-rent di local repository
