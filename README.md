@@ -6,10 +6,6 @@ Tugas Pengembangan Aplikasi web
 ```
 npm install
 ```
-- install config
-```
-npm add config
-```
 - install express
 ```
 npm install express
@@ -46,7 +42,10 @@ npm add bcryptjs
 ```
 npm add cookie-parser
 ```
-
+- install config
+```
+npm add config
+```
 # Setting .env file:
 - Buat file dengan nama ".env" dalam folder campus-bike-rent di local repository
 - Isi file:
