@@ -2,7 +2,7 @@ import express from 'express';
 import Bike from "../models/Bike.js"
 
 //Create 
-export const create = async (req, res, next) => {
+export const createBike = async (req, res, next) => {
     const newBike = new Bike(req.body)
     // res.send("Hello this is bike endpoint!")
     try {
@@ -14,7 +14,7 @@ export const create = async (req, res, next) => {
 }
 
 //update
-export const updateById = async (req, res, next) => {
+export const updateBike = async (req, res, next) => {
     try {
         const updatedBike = await  Bike.findByIdAndUpdate(req.params.id, { $set: req.body}, {new: true})
         res.status(200).json(updatedBike)
@@ -24,7 +24,7 @@ export const updateById = async (req, res, next) => {
 }
 
 //delete
-export const deleteById = async (req, res, next) => {
+export const deleteBikeById = async (req, res, next) => {
     try {
         await  Bike.deleteOne({_id: req.params.id})
         res.status(200).json("Bike has been deleted.")
@@ -34,7 +34,7 @@ export const deleteById = async (req, res, next) => {
 }
 
 //findById
-export const findById = async (req, res, next) => {
+export const findBikeById = async (req, res, next) => {
     try {
         const bike = await  Bike.findById(req.params.id)
         res.status(200).json(bike)
@@ -44,7 +44,7 @@ export const findById = async (req, res, next) => {
 }
 
 //findAll
-export const findAll = async (req, res, next) => {
+export const findAllBikes = async (req, res, next) => {
     try {
         const bikes = await  Bike.find()
         res.status(200).json(bikes)

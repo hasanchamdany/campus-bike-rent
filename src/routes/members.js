@@ -21,16 +21,16 @@ router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
 })
 
 //Update
-router.put("/:id", controller.updateById);
+router.put("/:id", controller.updateMemberById);
 
 //Delete
-router.delete("/:id", controller.deleteById);
+router.delete("/:id", controller.deleteMemberById);
 
 //findById
-router.get("/:id", controller.findById);
+router.get("/:id", controller.findMemberById);
 
 //findAll
-router.get("/", controller.findAll);
+router.get("/", controller.findAllMembers);
 
 router.get("/", async (req, res) => {
   res.send("hello this is member router endpoint!");

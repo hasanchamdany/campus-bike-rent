@@ -2,7 +2,7 @@ import express from "express";
 import Member from "../models/Member.js";
 
 //Create
-export const create = async (req, res, next) => {
+export const createMember = async (req, res, next) => {
   const newMember = new Member(req.body);
   // res.send("Hello this is member endpoint!")
   try {
@@ -14,7 +14,7 @@ export const create = async (req, res, next) => {
 };
 
 //update
-export const updateById = async (req, res, next) => {
+export const updateMemberById = async (req, res, next) => {
   try {
     const updatedMember = await Member.findByIdAndUpdate(
       req.params.id,
@@ -28,7 +28,7 @@ export const updateById = async (req, res, next) => {
 };
 
 //delete
-export const deleteById = async (req, res, next) => {
+export const deleteMemberById = async (req, res, next) => {
   try {
     await Member.deleteOne({ _id: req.params.id });
     res.status(200).json("Member has been deleted.");
@@ -38,7 +38,7 @@ export const deleteById = async (req, res, next) => {
 };
 
 //findById
-export const findById = async (req, res, next) => {
+export const findMemberById = async (req, res, next) => {
   try {
     const member = await Member.findById(req.params.id);
     res.status(200).json(member);
@@ -48,7 +48,7 @@ export const findById = async (req, res, next) => {
 };
 
 //findAll
-export const findAll = async (req, res, next) => {
+export const findAllMembers = async (req, res, next) => {
   try {
     const members = await Member.find();
     res.status(200).json(members);
