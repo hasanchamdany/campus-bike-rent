@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv/config";
+import authRoutes from "./src/routes/auth.js";
 import bikeRoutes from "./src/routes/bikes.js";
 import adminRoutes from "./src/routes/admins.js";
 import memberRoutes from "./src/routes/members.js"
 import bookingRoutes from "./src/routes/bookings.js";
 import config from "config";
+import cookieParser from "cookie-parser";
 
 // const express = require('express');
 const app = express();
@@ -52,7 +54,9 @@ app.get("/", (req, res) => {
 });
 
 //middleware
+app.use(cookieParser())
 app.use(express.json());
+app.use("/auth", authRoutes);
 app.use("/bike", bikeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/member", memberRoutes);
