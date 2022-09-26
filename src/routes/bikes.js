@@ -1,22 +1,22 @@
 import express from 'express';
 import Bike from "../models/Bike.js";
 import * as controller from "../controller/bikeController.js";
-import * as verify from "../utils/verifyToken.js"
+import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 //cons express = require('express');
 const router = express.Router()
 
 
 //Create
-router.post('/', controller.createBike)
+router.post('/', verifyAdmin, controller.createBike)
 
 
 //Update
-router.put('/:id', controller.updateBike)
+router.put('/:id', verifyAdmin, controller.updateBike)
 
 
 //Delete
-router.delete('/:id', controller.deleteBikeById)
+router.delete('/:id', verifyAdmin, controller.deleteBikeById)
 
 
 //findById
