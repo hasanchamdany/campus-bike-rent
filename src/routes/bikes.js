@@ -1,29 +1,29 @@
 import express from 'express';
 import Bike from "../models/Bike.js";
-import * as controller from "../controller/bikeController.js";
-import * as verify from "../utils/verifyToken.js"
+import {createBike, updateBike, deleteBikeById, findBikeById, findAllBikes} from "../controller/bikeController.js";
+import {verifyAdmin, verifyToken} from "../utils/verifyToken.js"
 
 //cons express = require('express');
 const router = express.Router()
 
 
 //Create
-router.post('/', controller.createBike)
+router.post('/', verifyToken, verifyAdmin, createBike)
 
 
 //Update
-router.put('/:id', controller.updateBike)
+router.put('/:id', verifyToken, verifyAdmin, updateBike)
 
 
 //Delete
-router.delete('/:id', controller.deleteBikeById)
+router.delete('/:id',verifyToken, verifyAdmin, deleteBikeById)
 
 
 //findById
-router.get("/:id", controller.findBikeById)
+router.get("/:id", findBikeById)
 
 //findAll
-router.get("/", controller.findAllBikes)
+router.get("/", findAllBikes)
 
 router.get('/', async (req, res) => {
     res.send("hello this is bike router endpoint!")

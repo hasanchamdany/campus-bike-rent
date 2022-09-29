@@ -1,6 +1,6 @@
 import express from "express";
 import Member from "../models/Member.js";
-import * as controller from "../controller/memberController.js";
+import {updateMemberById, deleteMemberById, findMemberById, findAllMembers} from "../controller/memberController.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 // const express = require('express');
 const router = express.Router();
@@ -21,16 +21,16 @@ router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
 })
 
 //Update
-router.put("/:id", controller.updateMemberById);
+router.put("/:id", verifyUser, updateMemberById);
 
 //Delete
-router.delete("/:id", controller.deleteMemberById);
+router.delete("/:id",verifyUser, deleteMemberById);
 
 //findById
-router.get("/:id", controller.findMemberById);
+router.get("/:id", verifyUser, findMemberById);
 
 //findAll
-router.get("/", controller.findAllMembers);
+router.get("/", verifyAdmin, findAllMembers);
 
 router.get("/", async (req, res) => {
   res.send("hello this is member router endpoint!");

@@ -1,26 +1,25 @@
 import express from "express";
 import Member from "../models/Member.js";
-import * as controller from "../controller/bookingController.js";
-import * as ver from "../utils/verifyToken.js";
+import {createBooking, updateBookingById, deleteBookingById, findBookingById, findAllBookings} from "../controller/bookingController.js";
+import {verifyToken} from "../utils/verifyToken.js";
 
 // const express = require('express');
 const router = express.Router();
 
 //Create
-router.post("/", controller.createBooking);
-
+router.post("/", verifyToken, createBooking);
 
 //Update
-router.put("/:id", controller.updateBookingById);
+router.put("/:id", verifyToken, updateBookingById);
 
 //Delete
-router.delete("/:id", controller.deleteBookingById);
+router.delete("/:id", verifyToken, deleteBookingById);
 
 //findById
-router.get("/:id", controller.findBookingById);
+router.get("/:id", verifyToken, findBookingById);
 
 //findAll
-router.get("/", controller.findAllBookings);
+router.get("/", verifyToken, findAllBookings);
 
 router.get("/", async (req, res) => {
   res.send("hello this is booking router endpoint!");
