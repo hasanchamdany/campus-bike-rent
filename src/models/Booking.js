@@ -3,13 +3,19 @@ const { Schema } = mongoose;
 
 const bookingSchema = new mongoose.Schema({
   //id member
+
+  
   location: {
     type: String,
     required: true,
   },
-  tanggal: {
+  DateTake: {
     type: Date,
     required: true,
+  },
+  DateReturn: {
+    type: Date,
+    required:false,
   },
   jam: {
     type: String,
