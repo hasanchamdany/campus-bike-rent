@@ -22,6 +22,10 @@ const bikeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // riderId:{
+  //   type: mongoose.Types.ObjectId,
+  //   required: false,
+  // }
 });
 
 export default mongoose.model("Bike", bikeSchema);

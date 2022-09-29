@@ -3,8 +3,16 @@ const { Schema } = mongoose;
 
 const bookingSchema = new mongoose.Schema({
   //id member
-
-  
+  memberId: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    unique: false,
+  },
+  bikeId: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    unique: false,
+  },
   location: {
     type: String,
     required: true,
@@ -13,14 +21,16 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  DateReturn: {
-    type: Date,
-    required:false,
+  returnedStatus:{
+    type: Boolean,
+    required: true,
   },
   jam: {
     type: String,
     required: true,
   },
-});
+},
+{timestamps: true}
+);
 
 export default mongoose.model("Booking", bookingSchema);
