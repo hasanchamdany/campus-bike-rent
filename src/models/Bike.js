@@ -16,7 +16,7 @@ const bikeSchema = new mongoose.Schema({
   },
   borrowPeriod: {
     type: String,
-    required: true,
+    default: 0,
   },
   condition: {
     type: String,

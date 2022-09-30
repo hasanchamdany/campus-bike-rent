@@ -23,10 +23,11 @@ const bookingSchema = new mongoose.Schema({
   },
   returnedStatus:{
     type: Boolean,
+    default:0,
     required: true,
   },
   jam: {
-    type: String,
+    type: Number,
     required: true,
   },
 },

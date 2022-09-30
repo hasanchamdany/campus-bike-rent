@@ -41,6 +41,7 @@ export const create = async (req, res, next) => {
 
     res.status(201).json(result);
   } catch (err) {
+    res.status(500).json(err);
     next(createError(405, "Something went wrong can't booking bike"));
   }
 };
@@ -107,8 +108,8 @@ export const deleteBookingById = async (req, res, next) => {
 //findById
 export const findBookingById = async (req, res, next) => {
   try {
-    const Booking = await Booking.findById(req.params.id);
-    res.status(200).json(Booking);
+    const Bookings = await Booking.findById(req.params.id);
+    res.status(200).json(Bookings);
   } catch (err) {
     res.status(500).json(err);
   }
