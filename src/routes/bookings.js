@@ -1,6 +1,6 @@
 import express from "express";
 import Member from "../models/Member.js";
-import {createBooking, updateBookingById, deleteBookingById, findBookingById, findAllBookings} from "../controller/bookingController.js";
+import {createBooking, updateBookingById, deleteBookingById, findBookingById, findAllBookings, create} from "../controller/bookingController.js";
 import {verifyToken} from "../utils/verifyToken.js";
 
 // const express = require('express');
