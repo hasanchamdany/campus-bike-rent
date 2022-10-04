@@ -1,6 +1,6 @@
 import express from "express";
 import Member from "../models/Member.js";
-import {createBooking, updateBookingById, deleteBookingById, findBookingById, findAllBookings, create} from "../controller/bookingController.js";
+import { updateBookingById, deleteBookingById, findBookingById, findAllBookings,  createBooking, returnBike} from "../controller/bookingController.js";
 import {verifyToken} from "../utils/verifyToken.js";
 
 // const express = require('express');
@@ -11,6 +11,7 @@ router.post("/", verifyToken, createBooking);
 
 //Update
 router.put("/:id", verifyToken, updateBookingById);
+router.put("/return/:id", verifyToken, returnBike)
 
 //Delete
 router.delete("/:id", verifyToken, deleteBookingById);
