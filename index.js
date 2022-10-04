@@ -9,6 +9,8 @@ import bookingRoutes from "./src/routes/bookings.js";
 import config from "config";
 import cookieParser from "cookie-parser";
 
+import bodyParser from "body-parser";
+
 // const express = require('express');
 const app = express();
 // const mongoose = require('mongoose');
@@ -54,6 +56,7 @@ app.get("/", (req, res) => {
 });
 
 //middleware
+app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(express.json());
 app.use("/auth", authRoutes);
