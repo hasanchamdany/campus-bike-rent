@@ -46,15 +46,65 @@ npm add cookie-parser
 ```
 npm add config
 ```
-# Setting .env file:
-- Buat file dengan nama ".env" dalam folder campus-bike-rent di local repository
-- Isi file:
-<br>PORT: 3000 
-<br>DB_CONNECTON: mongodb+srv://paw5:paw5@cluster0.1mmny7r.mongodb.net/?retryWrites=true&w=majority
+# Foler Structure
+```
+📦api
+ ┣ 📂config
+ ┃ ┗ 📜default.json
+ ┣ 📂src
+ ┃ ┣ 📂controller
+ ┃ ┃ ┣ 📜adminController.js
+ ┃ ┃ ┣ 📜authController.js
+ ┃ ┃ ┣ 📜bikeController.js
+ ┃ ┃ ┣ 📜bookingController.js
+ ┃ ┃ ┗ 📜memberController.js
+ ┃ ┣ 📂models
+ ┃ ┃ ┣ 📜Admin.js
+ ┃ ┃ ┣ 📜Bike.js
+ ┃ ┃ ┣ 📜Booking.js
+ ┃ ┃ ┗ 📜Member.js
+ ┃ ┣ 📂routes
+ ┃ ┃ ┣ 📜admins.js
+ ┃ ┃ ┣ 📜auth.js
+ ┃ ┃ ┣ 📜bikes.js
+ ┃ ┃ ┣ 📜bookings.js
+ ┃ ┃ ┗ 📜members.js
+ ┃ ┗ 📂utils
+ ┃ ┃ ┣ 📜error.js
+ ┃ ┃ ┗ 📜verifyToken.js
+ ┣ 📜.env
+ ┣ 📜.gitignore
+ ┣ 📜index.js
+ ┣ 📜package-lock.json
+ ┗ 📜package.json
+
+📦client
+ ┣ 📂public
+ ┃ ┣ 📂images
+ ┃ ┣ 📜index.html
+ ┃ ┣ 📜manifest.json
+ ┃ ┗ 📜robots.txt
+ ┣ 📂src
+ ┃ ┣ 📂components
+ ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📜index.js
+ ┃ ┃ ┗ 📜rent.js
+ ┃ ┣ 📜App.css
+ ┃ ┣ 📜App.js
+ ┃ ┣ 📜App.test.js
+ ┃ ┣ 📜index.css
+ ┃ ┣ 📜index.js
+ ┃ ┣ 📜logo.svg
+ ┃ ┣ 📜reportWebVitals.js
+ ┃ ┗ 📜setupTests.js
+ ┣ 📜.gitignore
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┗ 📜README.md
+ ```
 
 # Run
 Command untuk run dev script yang didefinisikan di package. json file dalam project.
 ```
 npm run dev
 ```
-
