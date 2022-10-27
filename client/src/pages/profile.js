@@ -1,15 +1,15 @@
 import React from 'react'
 import Navbar from "./../components/Navbar/Navbar.jsx";
 
-const Home = () => {
+const profile = () => {
   return (
     <>
     <Navbar />
     <div className="text-center text-white bgdefault w-full h-[910px]">
-      Rent/Book
+      Profile
     </div>
   </>
   )
 }
-  
-export default Home
+
+export default profile
