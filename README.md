@@ -1,5 +1,8 @@
-# campus-bike-rent
-Tugas Pengembangan Aplikasi web
+<h1 align="center">
+  Campus Bike Rent
+</h1>
+
+<p align="center">Tugas Pengembangan Aplikasi Web</p><br>
 
 # Package included:
 - install npm
@@ -102,6 +105,37 @@ npm add config
  ┣ 📜package.json
  ┗ 📜README.md
  ```
+
+## 🗒️ Contribution Guide
+
+### Branch Name
+
+```
+<type>/<short_description>
+
+# contoh
+feature/get-all-books
+```
+
+`<type>` :
+
+- `feature`: saya menambahkan fitur baru
+- `fix`: saya memperbaiki fitur
+
+[Learn More](https://nvie.com/posts/a-successful-git-branching-model/)
+
+### Commit Message (Git Conventional Commits)
+
+```
+<type>(scope): <short_summary>
+
+# contoh
+feat(books): get all books service
+fix(books): missing variable
+```
+
+[Learn More](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
+
 
 # Run
 Command untuk run dev script yang didefinisikan di package. json file dalam project.

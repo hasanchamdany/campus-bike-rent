@@ -1,13 +1,25 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  @font-face {
+    font-family: 'Inter';
+    src: url(./assets/font/Inter-Black.ttf);
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Inter';
+    src: url(./assets/font/Inter-Bold.ttf);
+    font-style: bold;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbarbg{
+  /* background: linear-gradient(180deg, #26468B 0%, rgba(38, 70, 139, 0) 100%); */
+  background: linear-gradient(90deg, #26468B 0%, #3870CB 99.17%);
+}
+
+.bgdefault{
+  background: linear-gradient(247.05deg, #3A73D0 0%, #1F3673 99.97%, rgba(24, 79, 168, 0.0102906) 99.98%, rgba(24, 79, 168, 0.00520833) 99.99%, #3B6CBB 100%);
 }
