@@ -16,12 +16,22 @@ module.exports = {
 					logo: '#1B3067'
 				},
 				blue: {
+          pale: "#5B80BC",
+          medium: "#3361AC",
+
 					light: '#3A73D0',
 					dark: '#1B3067',
           nav: '#315FB1'
 				},
+        yellow:{
+          dark: "#E8AF30",
+        },
+        grey:{
+          lighter: "#f9f9f9",
+          light: "#ececec",
+        },
 				'c-yellow': '#FDFEDB'
-			},
+			}
     },
   },
   plugins: [],
