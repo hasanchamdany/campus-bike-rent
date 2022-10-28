@@ -26,6 +26,9 @@ module.exports = {
         yellow:{
           dark: "#E8AF30",
         },
+        cream:{
+          pale: "#E7E6DD",
+        },
         grey:{
           lighter: "#f9f9f9",
           light: "#ececec",

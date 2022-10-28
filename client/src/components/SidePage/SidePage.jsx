@@ -4,11 +4,15 @@ import helloBike from "../../assets/Images/hello-bike.webp"
 export default function SideCard() {
   return (
     <div
-      className="shadow-2xl px-20 py-16 rounded-tr-xl rounded-br-xl h-5/6 w-11/12
-    bg-gradient-to-r from-mediumBlue to-darkBlue hover:from-paleBlue hover:via-mediumBlue hover:to-darkBlue 
+      className="flex flex-col justify-center items-center
+      shadow-2xl px-6 py-6 rounded-br-xl h-full w-full
+    bg-gradient-to-r from-blue-medium to-blue-dark hover:from-blue-pale hover:via-blue-medium hover:to-blue-dark 
     transition-colors duration-1000 delay-150"
     >
-      <img src={helloBike} alt="bike hello"></img>
+      <div className="m-auto">
+        <img src={helloBike} alt="bike hello" 
+            className="rounded-xl w-9/12 h-9/12 m-auto"></img>
+      </div>
     </div>
   )
 }
