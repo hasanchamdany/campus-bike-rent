@@ -6,9 +6,9 @@ import TxtInputLg from "../Inputs/TxtInputLg"
 export default function Form() {
   return (
     <div
-      className="shadow-2xl rounded-xl bg-white px-16 py-16 h-5/6 w-10/12 
-      lg:rounded-tr-none lg:rounded-br-none lg:w-11/12 lg:pl-36
-      md:w-1/2"
+      className="flex flex-col justify-center 
+                shadow-2xl rounded-xl bg-white px-6 py-16 h-5/6 w-10/12 
+                lg:w-9/12 lg:pl-24 md:w-1/2"
     >
       {/* start - div for loginTitle */}
       <div id="loginTitle" className="flex gap-x-2">
