@@ -7,8 +7,8 @@ export default function Form() {
   return (
     <div
       className="flex flex-col justify-center 
-                shadow-2xl rounded-xl bg-white px-6 py-16 h-5/6 w-10/12 
-                lg:w-9/12 lg:pl-24 md:w-1/2"
+                shadow-2xl rounded-xl bg-white px-10 py-16 h-5/6 w-10/12 
+                lg:w-9/12 lg:pl-24 md:w-1/2 md:px-10"
     >
       {/* start - div for loginTitle */}
       <div id="loginTitle" className="flex gap-x-2">
@@ -28,6 +28,7 @@ export default function Form() {
             placeholderText="janedoe@xxxxx.com"
           />
           <TxtInputLg
+            inputType="password"
             inputLabel="Password"
             placeholderText="janedoe198461376817"
           />

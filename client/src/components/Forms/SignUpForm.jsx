@@ -5,9 +5,9 @@ import TxtInputMd from "../Inputs/TxtInputMd"
 const signUpForm = () => {
   return (
     <div
-      className="shadow-2xl rounded-xl bg-white px-16 py-16 h-5/6 w-10/12 
-      lg:rounded-tr-none lg:rounded-br-none lg:w-11/12 lg:pl-40
-      md:w-1/2"
+      className="flex flex-col justify-center 
+                shadow-2xl rounded-xl bg-white px-10 py-16 h-5/6 w-10/12 
+                lg:w-9/12 lg:pl-24 md:w-1/2 md:px-10"
     >
       {/* start - div for Sign Up Title */}
       <div id="loginTitle" className="flex">
@@ -31,6 +31,7 @@ const signUpForm = () => {
           <TxtInputMd inputLabel="Full Name" placeholderText="Jane Doe" />
           <TxtInputMd inputLabel="Email" placeholderText="janedoe@xxx.com" />
           <TxtInputMd
+            inputType="password"
             inputLabel="Password"
             placeholderText="janedoe12813279"
           />
