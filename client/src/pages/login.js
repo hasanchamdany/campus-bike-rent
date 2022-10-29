@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import LoginForm from "../components/Forms/LoginForm"
 import SidePage from "../components/SidePage/SidePage"
 
@@ -8,7 +8,7 @@ const login = () => {
       {/* start - left div -> untuk form */}
       <div
         className="flex w-full  items-center justify-center 
-                      lg:w-1/2 "
+                  lg:w-1/2 "
       >
         <LoginForm />
       </div>
