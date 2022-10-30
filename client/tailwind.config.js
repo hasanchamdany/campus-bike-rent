@@ -12,9 +12,6 @@ module.exports = {
     extend: {
       colors: {
 				current: 'currentColor',
-				'c-blue': {
-					logo: '#1B3067'
-				},
 				blue: {
           pale: "#5B80BC",
           medium: "#3361AC",
@@ -23,6 +20,9 @@ module.exports = {
 					dark: '#1B3067',
           nav: '#315FB1'
 				},
+        'orange' : '#FFB703'
+			},
+
         yellow:{
           dark: "#E8AF30",
         },
@@ -35,6 +35,7 @@ module.exports = {
         },
 				'c-yellow': '#FDFEDB'
 			}
+
     },
   },
   plugins: [],

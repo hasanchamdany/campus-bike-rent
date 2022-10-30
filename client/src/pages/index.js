@@ -6,7 +6,7 @@ const Home = () => {
     <>
     <Navbar />
     <div className="text-center text-white bgdefault w-full h-[910px]">
-      Rent/Book
+      Home Page
     </div>
   </>
   )
