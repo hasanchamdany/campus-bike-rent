@@ -20,7 +20,8 @@ module.exports = {
 					dark: '#1B3067',
           nav: '#315FB1'
 				},
-				'c-yellow': '#FDFEDB'
+				'c-yellow': '#FDFEDB',
+        'orange' : '#FFB703'
 			},
     },
   },

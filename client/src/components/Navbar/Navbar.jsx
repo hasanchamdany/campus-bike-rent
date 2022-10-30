@@ -64,7 +64,7 @@ export default function NavBar() {
                                 <a href="/profile">PROFILE</a>
                             </li>
                             <li className="text-white hover:text-indigo-200 font-Inter font-bold">
-                                <a href="/admin">DASHBOARD</a>
+                                <a href="/admin/member">DASHBOARD</a>
                             </li>
                         </ul>
 
