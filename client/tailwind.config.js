@@ -20,7 +20,8 @@ module.exports = {
 					dark: '#1B3067',
           nav: '#315FB1'
 				},
-        'orange' : '#FFB703'
+        'orange' : '#FFB703',
+        'c-yellow': '#FDFEDB'
 			},
 
         yellow:{
@@ -33,10 +34,8 @@ module.exports = {
           lighter: "#f9f9f9",
           light: "#ececec",
         },
-				'c-yellow': '#FDFEDB'
+				
 			}
 
     },
-  },
-  plugins: [],
-}
+  }
