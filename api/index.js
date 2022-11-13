@@ -8,7 +8,7 @@ import memberRoutes from "./src/routes/members.js"
 import bookingRoutes from "./src/routes/bookings.js";
 import config from "config";
 import cookieParser from "cookie-parser";
-
+import cors from "cors"
 import bodyParser from "body-parser";
 
 // const express = require('express');
@@ -56,6 +56,7 @@ app.get("/", (req, res) => {
 });
 
 //middleware
+app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(express.json());

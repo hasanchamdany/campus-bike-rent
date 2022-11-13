@@ -1,10 +1,32 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx"
-
+import MemberTableTest from "../../components/Tables/MemberTaabletest.jsx"
+import useFetch from "../../hooks/useFetch"
+import Membertable from "../../components/Tables/MemberTable.jsx"
+import AdminBikeForm from "../../components/CRUDForm/AdminBikeForm.jsx"
+import axios from "axios"
 
 const DashboardMember = () => {
     
+  const { data, loading, error} = useFetch("http://localhost:8800/api/bike")
+  console.log(data)
+  // const axios = require("axios");
+  // axios.get('http://localhost:8800/api/bike')
+  // .then(function (response) {
+  //   // handle success
+  //   // const data = response.map()
+  //   console.log(response);
+  //   // console.log(data)
+  // })
+  // .catch(function (error) {
+  //   // handle error
+  //   console.log(error);
+  // })
+  // .then(function () {
+  //   // always executed
+  // });
+
   return (
     <>
       <Navbar />
@@ -13,8 +35,12 @@ const DashboardMember = () => {
           Hello, <span className=" text-orange">Admins</span>
         </div>
         <NavbarDash/>
-        <div>
-            
+        <div className="max-w-[1240px] h-[100px]  mx-auto rounded-xl ">
+          <AdminBikeForm/>
+        </div>
+        <div className="max-w-[1256px] mx-auto px-4 pt-8 rounded-[30px]">
+            <MemberTableTest/>
+            {/* <Membertable/> */}
         </div>
       </div>
     </>

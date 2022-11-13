@@ -30,7 +30,8 @@ router.delete("/:id",verifyUser, deleteMemberById);
 router.get("/:id", verifyUser, findMemberById);
 
 //findAll
-router.get("/", verifyAdmin, findAllMembers);
+router.get("/",  findAllMembers); //testing mode
+// router.get("/", verifyAdmin, findAllMembers);
 
 router.get("/", async (req, res) => {
   res.send("hello this is member router endpoint!");
