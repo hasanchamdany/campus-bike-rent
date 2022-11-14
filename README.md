@@ -4,52 +4,39 @@
 
 <p align="center">Tugas Pengembangan Aplikasi Web</p><br>
 
-# Package included:
-- install npm
+## Presentation Assets 🖌️
+### Backend :
+[PPT-backend](https://www.canva.com/design/DAFNzGW_Ies/VAiDC0x36AfbPneCubN9gQ/view?utm_content=DAFNzGW_Ies&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+### Frontend :
+[PPT-frontend]()
+
+## How to Run ?
+### Run Backend
+Command untuk run dev script yang didefinisikan di package. json file dalam project.
+#### If you using npm:
 ```
 npm install
+npm run dev
 ```
-- install express
+#### if you using yarn:
 ```
-npm install express
+yarn install
+yarn dev
 ```
-- add express
+### Run frontend
+Command untuk run React project :
+#### if you using npm:
 ```
-npm add express
+npm install
+npm start
 ```
-- install nodemon
+#### if you using yarn:
 ```
-npm add nodemon
+yarn install
+yarn dev
 ```
-- install mongosh
-```
-npm add mongosh
-```
-- install mongoose
-```
-npm add mongoose
-```
-- install dotenv
-```
-npm add dotenv
-```
-- install JWT
-```
-npm add jsonwebtoken
-```
-- install bcryptjs
-```
-npm add bcryptjs
-```
-- install cookie-parser
-```
-npm add cookie-parser
-```
-- install config
-```
-npm add config
-```
-# Foler Structure
+
+## Foler Structure
 ```
 📦api
  ┣ 📂config

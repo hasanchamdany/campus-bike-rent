@@ -8,7 +8,10 @@ const router = express.Router()
 
 
 //Create
-router.post('/', verifyToken, verifyAdmin, createBike)
+//testing site without verifyToken re-activate when login token has been created
+// router.post('/', verifyToken, verifyAdmin, createBike)
+router.post('/',  createBike)
+
 
 
 //Update

@@ -42,6 +42,7 @@ const columns = [
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
+
   // {
   //   id: "action",
   //   label: "Action",

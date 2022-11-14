@@ -46,13 +46,13 @@ const columns = [
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "pass",
-    label: "Password",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toLocaleString("en-US"),
-  },
+  //   {
+  //     id: "password",
+  //     label: "Password",
+  //     minWidth: 170,
+  //     align: "center",
+  //     format: (value) => value.toLocaleString("en-US"),
+  //   },
   {
     id: "phoneNumber",
     label: "Phone Number",
