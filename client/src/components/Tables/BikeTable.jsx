@@ -13,8 +13,8 @@ import EditIcon from "../../assets/icon/edit-icon.svg";
 
 const columns = [
   {
-    id: "bookingStatus",
-    label: "Booking Status",
+    id: "availability",
+    label: "Awailability",
     minWidth: 170,
     align: "center",
     format: (value) => {
@@ -23,43 +23,32 @@ const columns = [
     },
   },
   {
-    id: "email",
-    label: "Email",
+    id: "borrowPeriod",
+    label: "Borrow Period",
     minWidth: 100,
     align: "center",
-    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "isAdmin",
-    label: "isAdmin",
-    minWidth: 170,
-    align: "center",
-    format: (value) => {
-      console.log("here", value);
-      return value ? "true" : "false";
-    },
-  },
-  {
-    id: "name",
-    label: "Name",
+    id: "condition",
+    label: "Condition",
     minWidth: 170,
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "pass",
-    label: "Password",
+    id: "location",
+    label: "Location",
     minWidth: 170,
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "phoneNumber",
-    label: "Phone Number",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toLocaleString("en-US"),
-  },
+  // {
+  //   id: "action",
+  //   label: "Action",
+  //   minWidth: 170,
+  //   align: "center",
+  //   // format: (value) => value.toLocaleString("en-US"),
+  // },
   // {
   //   id: 'density',
   //   label: 'Density',
@@ -70,7 +59,7 @@ const columns = [
 ];
 
 export default function StickyHeadTable() {
-  const { data, loading, error } = useFetch("http://localhost:8800/api/member");
+  const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
   console.log("data", data);
 
   const [page, setPage] = React.useState(0);
