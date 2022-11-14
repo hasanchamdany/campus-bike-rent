@@ -48,7 +48,7 @@ const columns = [
     label: "Date Taken",
     minWidth: 170,
     align: "center",
-    format: (value) => value.Moment().format('DD-MM-YYYY'),
+    format: (value) => value.Moment().format("DD-MM-YYYY"),
   },
   // {
   //   id: "action",
@@ -67,7 +67,9 @@ const columns = [
 ];
 
 export default function StickyHeadTable() {
-  const { data, loading, error } = useFetch("http://localhost:8800/api/booking");
+  const { data, loading, error } = useFetch(
+    "http://localhost:8800/api/booking"
+  );
   console.log("data", data);
 
   const [page, setPage] = React.useState(0);
