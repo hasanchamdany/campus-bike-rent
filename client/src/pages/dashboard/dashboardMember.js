@@ -1,16 +1,15 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx"
-import MemberTableTest from "../../components/Tables/MemberTaabletest.jsx"
-import useFetch from "../../hooks/useFetch"
-import Membertable from "../../components/Tables/MemberTable.jsx"
-import AdminBikeForm from "../../components/CRUDForm/AdminBikeForm.jsx"
-import axios from "axios"
+import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx";
+import MemberTableTest from "../../components/Tables/MemberTable.jsx";
+import useFetch from "../../hooks/useFetch";
+import Membertable from "../../components/Tables/MemberTable.jsx";
+import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx";
+import axios from "axios";
 
 const DashboardMember = () => {
-    
-  const { data, loading, error} = useFetch("http://localhost:8800/api/bike")
-  console.log(data)
+  const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
+  console.log(data);
   // const axios = require("axios");
   // axios.get('http://localhost:8800/api/bike')
   // .then(function (response) {
@@ -34,13 +33,13 @@ const DashboardMember = () => {
         <div className=" pt-16 text-3xl font-bold font-Inter justify-left ml-24">
           Hello, <span className=" text-orange">Admins</span>
         </div>
-        <NavbarDash/>
+        <NavbarDash />
         <div className="max-w-[1240px] h-[100px]  mx-auto rounded-xl ">
-          <AdminBikeForm/>
+          <AdminMemberForm />
         </div>
-        <div className="max-w-[1256px] mx-auto px-4 pt-8 rounded-[30px]">
-            <MemberTableTest/>
-            {/* <Membertable/> */}
+        <div className="max-w-[1256px] mx-auto px-4 pt-16 rounded-[30px]">
+          <MemberTableTest />
+          {/* <Membertable/> */}
         </div>
       </div>
     </>
