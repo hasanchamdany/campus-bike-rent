@@ -20,7 +20,10 @@ router.delete("/:id", verifyToken, deleteBookingById);
 router.get("/:id", verifyToken, findBookingById);
 
 //findAll
-router.get("/", verifyToken, findAllBookings);
+// router.get("/", verifyToken, findAllBookings);
+
+//testing site without verifyToken re-activate when login token has been created
+router.get("/", findAllBookings)
 
 router.get("/", async (req, res) => {
   res.send("hello this is booking router endpoint!");
