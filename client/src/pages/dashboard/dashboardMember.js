@@ -8,7 +8,7 @@ import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx";
 import axios from "axios";
 
 const DashboardMember = () => {
-  const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
+  const { data, loading, error } = useFetch("http://localhost:8800/api/member");
   console.log(data);
   // const axios = require("axios");
   // axios.get('http://localhost:8800/api/bike')
