@@ -2,24 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
+@layer components {
   @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     src: url(./assets/font/Inter-Black.ttf);
     font-style: normal;
   }
   @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     src: url(./assets/font/Inter-Bold.ttf);
     font-style: bold;
   }
 }
 
-.navbarbg{
+.navbarbg {
   /* background: linear-gradient(180deg, #26468B 0%, rgba(38, 70, 139, 0) 100%); */
-  background: linear-gradient(90deg, #26468B 0%, #3870CB 99.17%);
+  background: linear-gradient(90deg, #26468b 0%, #3870cb 99.17%);
 }
 
-.bgdefault{
-  background: linear-gradient(247.05deg, #3A73D0 0%, #1F3673 99.97%, rgba(24, 79, 168, 0.0102906) 99.98%, rgba(24, 79, 168, 0.00520833) 99.99%, #3B6CBB 100%);
+.bgdefault {
+  background: linear-gradient(
+    247.05deg,
+    #3a73d0 0%,
+    #1f3673 99.97%,
+    rgba(24, 79, 168, 0.0102906) 99.98%,
+    rgba(24, 79, 168, 0.00520833) 99.99%,
+    #3b6cbb 100%
+  );
+}
+
+.dashboardnavr {
+  border-radius: 0px 15px 15px 0px;
+}
+
+.dashboardnavl {
+  border-radius: 15px 0px 0px 15px;
 }

@@ -10,7 +10,7 @@ const Home = () => {
       <div className="text-center text-white bgdefault w-full h-[910px]">
         Home
       </div>
-    </>
+    </> 
   )
 }
 
