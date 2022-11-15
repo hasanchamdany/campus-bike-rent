@@ -7,35 +7,35 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-			inter: ['Inner', 'serif'],
-		},
+      inter: ["Inner", "serif"],
+    },
     extend: {
       colors: {
-				current: 'currentColor',
-				blue: {
+        current: "currentColor",
+        "c-blue": {
+          logo: "#1B3067",
+        },
+        blue: {
           pale: "#5B80BC",
           medium: "#3361AC",
 
-					light: '#3A73D0',
-					dark: '#1B3067',
-          nav: '#315FB1'
-				},
-        'orange' : '#FFB703',
-        'c-yellow': '#FDFEDB'
-			},
-
-        yellow:{
+          light: "#3A73D0",
+          dark: "#1B3067",
+          nav: "#315FB1",
+        },
+        yellow: {
           dark: "#E8AF30",
         },
-        cream:{
+        cream: {
           pale: "#E7E6DD",
         },
-        grey:{
+        grey: {
           lighter: "#f9f9f9",
           light: "#ececec",
         },
-				
-			}
-
+        "c-yellow": "#FDFEDB",
+      },
     },
-  }
+  },
+  plugins: [],
+}

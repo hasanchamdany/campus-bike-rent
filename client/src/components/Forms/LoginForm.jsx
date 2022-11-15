@@ -23,10 +23,7 @@ export default function Form() {
       <div>
         {/* start - div for inputs */}
         <div className="mt-8">
-          <TxtInputLg
-            inputLabel="Email"
-            placeholderText="janedoe@xxxxx.com"
-          />
+          <TxtInputLg inputLabel="Email" placeholderText="janedoe@xxxxx.com" />
           <TxtInputLg
             inputType="password"
             inputLabel="Password"
