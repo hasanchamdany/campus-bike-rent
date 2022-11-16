@@ -1,6 +1,6 @@
 import * as React from "react"
-import BtnFormBlue from "../Buttons/BtnFormBlue"
-import TxtInputMd from "../Inputs/TxtInputMd"
+import BtnForm from "../Buttons/BtnForm"
+import TxtInput from "../Inputs/TxtInput"
 
 const signUpForm = () => {
   return (
@@ -12,7 +12,7 @@ const signUpForm = () => {
       {/* start - div for Sign Up Title */}
       <div id="loginTitle" className="flex">
         <h1 className="text-4xl font-bold text-blue-dark">Sign up to B</h1>
-        <h1 className="text-4xl font-bold text-yellow-dark">i</h1>
+        <h1 className="text-4xl font-bold text-orange">i</h1>
         <h1 className="text-4xl font-bold text-blue-dark">sa</h1>
       </div>
       {/* end - div for Sign Up Title */}
@@ -20,34 +20,59 @@ const signUpForm = () => {
       {/* start - div for Login alternative */}
       <div className="flex gap-x-1 font-normal mt-2 text-blue-dark">
         <p className="">Already a member?</p>
-        <button className="text-yellow-dark">Log In</button>
+        <button className="text-orange">Log In</button>
       </div>
       {/* end - div for Login alternative */}
 
       {/* start - div for inputs and buttons */}
-      <div>
-        {/* start - div for inputs */}
-        <div className="mt-8">
-          <TxtInputMd inputLabel="Full Name" placeholderText="Jane Doe" />
-          <TxtInputMd inputLabel="Email" placeholderText="janedoe@xxx.com" />
-          <TxtInputMd
-            inputType="password"
-            inputLabel="Password"
-            placeholderText="janedoe12813279"
-          />
-          <TxtInputMd
-            inputLabel="Phone Number"
-            placeholderText="081xxxxxxxxx"
-          />
-        </div>
-        {/* end - div for inputs */}
+      <form>
+        <div>
+          {/* start - div for inputs */}
+          <div className="mt-8">
+            <label className="text-lg font-medium text-blue-dark">
+              Full Name
+            </label>
+            <TxtInput
+              inputLabel="Full Name"
+              placeholder="Jane Doe"
+              className="p-1.5 mb-2"
+            />
+            <label className="text-lg font-medium text-blue-dark">Email</label>
+            <TxtInput
+              inputLabel="Email"
+              placeholder="janedoe@xxx.com"
+              className="p-1.5 mb-2"
+            />
+            <label className="text-lg font-medium text-blue-dark">
+              Password
+            </label>
+            <TxtInput
+              inputType="password"
+              inputLabel="Password"
+              placeholder="janedoe12813279"
+              className="p-1.5 mb-2"
+            />
+            <label className="text-lg font-medium text-blue-dark">
+              Phone Number
+            </label>
+            <TxtInput
+              inputLabel="Phone Number"
+              placeholder="081xxxxxxxxx"
+              className="p-1.5 mb-2"
+            />
+          </div>
+          {/* end - div for inputs */}
 
-        {/* start - div for buttons */}
-        <div className="mt-4 flex flex-col gap-y-2">
-          <BtnFormBlue buttonName={"Create Account"} />
+          {/* start - div for buttons */}
+          <div className="mt-4 flex flex-col gap-y-2">
+            <BtnForm
+              buttonName="Create Account"
+              className="text-white py-2 bg-gradient-to-r from-blue-medium to-blue-dark hover:from-blue-pale hover:via-blue-medium hover:to-blue-dark"
+            />
+          </div>
+          {/* end - div for buttons */}
         </div>
-        {/* end - div for buttons */}
-      </div>
+      </form>
       {/* end - div for inputs and buttons */}
     </div>
   )
