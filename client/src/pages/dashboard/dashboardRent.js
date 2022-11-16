@@ -10,6 +10,7 @@ const DashboardRent = () => {
     "http://localhost:8800/api/booking"
   );
   console.log(data);
+  
   return (
     <>
       <Navbar />

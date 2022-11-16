@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -10,6 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import useFetch from "../../hooks/useFetch";
 import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
+
+import EditBikeModal from "../../components/Modal/EditBikeModal";
 
 const columns = [
   {
@@ -42,26 +45,13 @@ const columns = [
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-
-  // {
-  //   id: "action",
-  //   label: "Action",
-  //   minWidth: 170,
-  //   align: "center",
-  //   // format: (value) => value.toLocaleString("en-US"),
-  // },
-  // {
-  //   id: 'density',
-  //   label: 'Density',
-  //   minWidth: 170,
-  //   align: 'right',
-  //   format: (value) => value.toFixed(2),
-  // },
 ];
 
 export default function StickyHeadTable() {
   const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
   console.log("data", data);
+  let [parseData, setParseData] = useState()
+  let [editModal, setEditModal] = useState(false);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -76,7 +66,13 @@ export default function StickyHeadTable() {
   };
 
   const onClickEdit = (data) => {
+    setEditModal(true)
     console.log(data);
+    setParseData(data)
+    console.log(parseData)
+    // return(
+    //   <EditBikeModal state={editModal} setState={setEditModal} placeholder={data} />
+    // )
   };
 
   return (
@@ -118,6 +114,10 @@ export default function StickyHeadTable() {
                       <button onClick={() => onClickEdit(row)}>
                         <img src={EditIcon} />
                       </button>
+                      
+                      {editModal ? <>
+                      <EditBikeModal state={editModal} setState={setEditModal} data={parseData} />
+                      </> : null}
                       <button className="ml-1">
                         <img src={DeleteIcon} width="25px" />
                       </button>

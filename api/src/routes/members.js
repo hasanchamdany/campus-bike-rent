@@ -21,7 +21,8 @@ router.get("/checkadmin/:id", verifyAdmin, (req, res, next) => {
 })
 
 //Update
-router.put("/:id", verifyUser, updateMemberById);
+router.put("/:id",  updateMemberById); //testing mode, re-activate auth when token already usable
+// router.put("/:id", verifyUser, updateMemberById); 
 
 //Delete
 router.delete("/:id",verifyUser, deleteMemberById);
