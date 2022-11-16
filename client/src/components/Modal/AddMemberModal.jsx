@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from "react";
 import PlusIcon from "../../assets/icon/plus-icon.png";
 import axios from "axios";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const AddMemberModal = (props) => {
   const [inputs, setInputs] = useState({});
   const { state, setState } = props;
   // console.log(state)
+
+  const [alert, setAlert] = useState({
+    open: false,
+    vertical: "top",
+    horizontal: "center",
+  });
+  const { vertical, horizontal, open } = alert;
+
+  const handleClose = () => {
+    setState({ ...alert, open: false });
+  };
+
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -20,6 +37,7 @@ const AddMemberModal = (props) => {
       .post("http://localhost:8800/api/auth/register", inputs)
       .then(function (response) {
         console.log(response);
+        setAlert({ open: true, vertical: "bottom", horizontal: "right" });
       })
       .catch(function (error) {
         console.log(error);
@@ -105,6 +123,17 @@ const AddMemberModal = (props) => {
           <div className="opacity-25 fixed inset-0 z-100 bg-black"></div>
         </div>
       )}
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        onClose={handleClose}
+        // message="Data has been Updated"
+        key={vertical + horizontal}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Data has been Added!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
