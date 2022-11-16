@@ -1,7 +1,6 @@
 import * as React from "react"
-import BtnFormBlue from "../Buttons/BtnFormBlue"
-import BtnFormWhite from "../Buttons/BtnFormWhite"
-import TxtInputLg from "../Inputs/TxtInputLg"
+import BtnForm from "../Buttons/BtnForm"
+import TxtInput from "../Inputs/TxtInput"
 
 export default function Form() {
   return (
@@ -13,7 +12,7 @@ export default function Form() {
       {/* start - div for loginTitle */}
       <div id="loginTitle" className="flex gap-x-2">
         <h1 className="text-4xl font-bold text-blue-dark">Hello</h1>
-        <h1 className="text-4xl font-bold text-yellow-dark">Again!</h1>
+        <h1 className="text-4xl font-bold text-orange">Again!</h1>
       </div>
       {/* end - div for loginTitle */}
 
@@ -21,34 +20,50 @@ export default function Form() {
 
       {/* start - div for inputs, buttons, descriptions */}
       <div>
-        {/* start - div for inputs */}
-        <div className="mt-8">
-          <TxtInputLg
-            inputLabel="Email"
-            placeholderText="janedoe@xxxxx.com"
-          />
-          <TxtInputLg
-            inputType="password"
-            inputLabel="Password"
-            placeholderText="janedoe198461376817"
-          />
-        </div>
-        {/* end - div for inputs */}
+        <form>
+          {/* start - div for inputs */}
+          <div className="mt-8">
+            {/* email */}
+            <label className="text-lg font-medium text-blue-dark">Email</label>
+            <TxtInput
+              name="email"
+              placeholder="janedoe@xxxxx.com"
+              className="p-3 mt-1 mb-3"
+            />
+            {/* password */}
+            <label className="text-lg font-medium text-blue-dark">
+              Password
+            </label>
+            <TxtInput
+              type="password"
+              name="password"
+              placeholder="janedoe198461376817"
+              className="p-3 mt-1 mb-3"
+            />
+          </div>
+          {/* end - div for inputs */}
 
-        {/* start - div for buttons */}
-        <div className="mt-8 flex flex-col gap-y-2">
-          <BtnFormBlue buttonName={"Log In"} />
-          <BtnFormWhite buttonName={"SignUp"} />
-        </div>
-        {/* end - div for buttons */}
+          {/* start - div for buttons */}
+          <div className="mt-8 flex flex-col gap-y-2">
+            <BtnForm
+              buttonName="Log In"
+              className="text-white py-2 bg-gradient-to-r from-blue-medium to-blue-dark hover:from-blue-pale hover:via-blue-medium hover:to-blue-dark"
+            />
+            <BtnForm
+              buttonName="SignUp"
+              className="text-blue-dark bg-white border-2 border-blue-dark py-2 bg-gradient-to-r hover:from-white hover:via-grey-lighter hover:to-grey-lighter "
+            />
+          </div>
+          {/* end - div for buttons */}
 
-        {/* start - div for description - log in as admin */}
-        <div className="flex justify-center items-center mt-4 lg:w-3/4">
-          <button className="text-xs text-blue-dark lg:w-3/4">
-            Log In as Admin
-          </button>
-        </div>
-        {/* end - div for description - log in as admin */}
+          {/* start - div for description - log in as admin */}
+          <div className="flex justify-center items-center mt-4 lg:w-3/4">
+            <button className="text-xs text-blue-dark lg:w-3/4">
+              Log In as Admin
+            </button>
+          </div>
+          {/* end - div for description - log in as admin */}
+        </form>
       </div>
       {/* end - div for inputs, buttons, descriptions */}
     </div>
