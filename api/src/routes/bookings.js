@@ -10,7 +10,8 @@ const router = express.Router();
 router.post("/", verifyToken, createBooking);
 
 //Update
-router.put("/:id", verifyToken, updateBookingById);
+router.put("/:id",  updateBookingById); // testing mode, re-activate when auth token already accessible
+// router.put("/:id", verifyToken, updateBookingById);
 router.put("/return/:id", verifyToken, returnBike)
 
 //Delete

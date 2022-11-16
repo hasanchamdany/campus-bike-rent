@@ -15,7 +15,10 @@ router.post('/',  createBike)
 
 
 //Update
-router.put('/:id', verifyToken, verifyAdmin, updateBike)
+// router.put('/:id', verifyToken, verifyAdmin, updateBike) //re-activate after testing or fixed login token
+
+// testing side
+router.put('/:id',  updateBike)
 
 
 //Delete
