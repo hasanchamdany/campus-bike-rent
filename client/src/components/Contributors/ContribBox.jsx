@@ -13,7 +13,7 @@ export default function ContribBox() {
     <>
       <h4 className="text-xl">Contributors:</h4>
       {/* --------- contributor card div start --------- */}
-      <div className="flex flex-row gap-6">
+      <div className="flex flex-wrap justify-center items-center gap-4 lg:flex-nowrap md:flex-nowrap">
         <ContribPerson
           personImg={sylvia}
           personAlt="Laili"

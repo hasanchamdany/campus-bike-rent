@@ -5,7 +5,7 @@ export default function AppLogo() {
     <>
       <div id="loginTitle" className="flex">
         <h1 className="text-7xl font-bold text-white">B</h1>
-        <h1 className="text-7xl font-bold text-yellow-dark">i</h1>
+        <h1 className="text-7xl font-bold text-orange">i</h1>
         <h1 className="text-7xl font-bold text-white">SA</h1>
       </div>
       <div>
