@@ -8,14 +8,21 @@ const editProfileCard = () => {
     <div>
         <img src = {src} alt="avatar" className="h-32 justify-center mx-auto rounded-full"/>
     </div>
-    <div id="Name" className = "text-2xl font-bold text-center">Reinhart Timothy Antonio Siregar</div>
+
     <div id="memberStatus" className="text-xl text-center">Member</div>
 
     <div className="grid grid-cols-2 mt-8">
+        <div className="px-4 py-2 font-semibold">Nama</div>
+        <TxtInputMd
+        inputLabel=""
+        placeholderText="Insert Your Name Here"
+        />
+    </div>
+    <div className="grid grid-cols-2">
         <div className="px-4 py-2 font-semibold">Email</div>
         <TxtInputMd
         inputLabel=""
-        placeholderText="janedoe@xxxxx.com"
+        placeholderText="contoh: janedoe@xxxxx.com"
         />
     </div>
 
@@ -23,7 +30,7 @@ const editProfileCard = () => {
         <div className="px-4 py-2 font-semibold">No Handphone</div>
         <TxtInputMd
         inputLabel=""
-        placeholderText="08123456789"
+        placeholderText="contoh: 08123456789"
         />
     </div>
 
@@ -34,8 +41,8 @@ const editProfileCard = () => {
         placeholderText="minimum 8 characters"
         />
     </div>
-    <div class ="justify-end ml-auto">
-    <button class="justify-right mx-auto h-10 px-10 m-2 text-white text-2xl transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800">Edit Profile</button>
+    <div class ="ml-auto">
+    <button class="mx-auto h-10 px-10 m-2 text-white text-2xl transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800">Edit Profile</button>
     </div>
     </div>
 }
