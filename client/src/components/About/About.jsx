@@ -12,7 +12,7 @@ export default function About() {
     // --------- about page div start --------- //
     <div
       className="flex flex-col items-center justify-center
-                  text-white bgdefault w-full"
+                  text-white bgdefault w-full pt-8"
     >
       {/* --------- logo div start --------- */}
       <div className="flex flex-col justify-center items-center font-semi-bold w-8/12 mt-6">

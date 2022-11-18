@@ -15,7 +15,8 @@ router.put("/:id",  updateBookingById); // testing mode, re-activate when auth t
 router.put("/return/:id", verifyToken, returnBike)
 
 //Delete
-router.delete("/:id", verifyToken, deleteBookingById);
+router.delete("/:id",  deleteBookingById); // testing mode, re-activate when auth token already accessible
+// router.delete("/:id", verifyToken, deleteBookingById);
 
 //findById
 router.get("/:id", verifyToken, findBookingById);
