@@ -1,12 +1,12 @@
+
 import * as React from "react";
 import { useState } from "react";
-import BtnFormBlue from "../Buttons/BtnFormBlue";
-import BtnFormWhite from "../Buttons/BtnFormWhite";
-import TxtInputLg from "../Inputs/TxtInputLg";
+
 import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
+
 
 export default function Form() {
   const [inputs, setInputs] = useState({});
@@ -68,11 +68,12 @@ export default function Form() {
         className="flex flex-col justify-center 
                 shadow-2xl rounded-xl bg-white px-10 py-16 h-5/6 w-10/12 
                 lg:w-9/12 lg:pl-24 md:w-1/2 md:px-10"
+// <<<<<<< HEAD
       >
         {/* start - div for loginTitle */}
         <div id="loginTitle" className="flex gap-x-2">
           <h1 className="text-4xl font-bold text-blue-dark">Hello</h1>
-          <h1 className="text-4xl font-bold text-yellow-dark">Again!</h1>
+          <h1 className="text-4xl font-bold text-orange">Again!</h1>
         </div>
         {/* end - div for loginTitle */}
 
@@ -164,6 +165,7 @@ export default function Form() {
           </form>
         </div>
         {/* end - div for inputs, buttons, descriptions */}
+
       </div>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}

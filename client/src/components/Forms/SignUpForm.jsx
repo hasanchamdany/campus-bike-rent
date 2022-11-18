@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
-import BtnFormBlue from "../Buttons/BtnFormBlue";
-import TxtInputMd from "../Inputs/TxtInputMd";
+import BtnForm from "../Buttons/BtnForm"
+import TxtInput from "../Inputs/TxtInput"
 import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -75,7 +75,7 @@ const SignUpForm = () => {
         </div>
         {/* end - div for Sign Up Title */}
 
-        {/* start - div for Login alternative */}
+        {/* start - div for Login alternative */} 
         <div className="flex gap-x-1 font-normal mt-2 text-blue-dark">
           <p className="">Already a member?</p>
           <button className="text-yellow-dark">Log In</button>
