@@ -23,12 +23,13 @@ export default function SideCard() {
               </button> 
           </div>
         </div>
-      <div className="flex m-auto">
-        <img src={riders} alt="bike hello" 
-            className="rounded-xl w-9/12 h-9/12 m-auto"></img>
-      </div></div>      
+        <div className="flex m-auto">
+          <img src={riders} alt="bike hello" 
+              className="rounded-xl w-9/12 h-9/12 m-auto"></img>
+        </div>
+      </div>      
       <div> 
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-8">
           <button>
             <img src={viewMore} alt="view more"
             className="hover:scale-[1.02] ease-in-out rounded-xl w-9/12 h-9/12 m-auto"></img>
