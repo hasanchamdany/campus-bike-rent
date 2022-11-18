@@ -62,7 +62,7 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
-  const [showModal, setShowModal] = useState(false);
+  {/*const [showModal, setShowModal] = useState(false);
   useEffect(() => setShowModal(false), []);
   useEffect(() => {
     const close = (e) => {
@@ -73,7 +73,7 @@ export default function StickyHeadTable() {
     };
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
-  }, []);
+  }, []);*/}
 
   return (
 
@@ -100,7 +100,7 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>mo
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (

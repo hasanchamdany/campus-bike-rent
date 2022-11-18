@@ -1,17 +1,17 @@
 import React from 'react'
 import Navbar from "./../components/Navbar/Navbar.jsx"
 import ProfileCard from "../components/Cards/ProfileCard.jsx"
-//import ProfileContentCard from "../components/Cards/ProfileContentCard.jsx"
-//import EditProfileCard from '../components/Cards/EditProfileCard.jsx';
-
+import useFetch from '../hooks/useFetch.js';
 const profile = () => {
+  
   return (
     <>
     <Navbar />
-
+    
     <div>
+      
       <ProfileCard />
-
+      
     </div>
   </>
   )

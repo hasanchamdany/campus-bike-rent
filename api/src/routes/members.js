@@ -29,7 +29,7 @@ router.delete("/:id", deleteMemberById); //testing mdode, re-activate auth when 
 // router.delete("/:id",verifyUser, deleteMemberById);
 
 //findById
-router.get("/:id", verifyUser, findMemberById);
+router.get("/:id", findMemberById);
 
 //findAll
 router.get("/",  findAllMembers); //testing mode
