@@ -25,7 +25,8 @@ router.put("/:id",  updateMemberById); //testing mode, re-activate auth when tok
 // router.put("/:id", verifyUser, updateMemberById); 
 
 //Delete
-router.delete("/:id",verifyUser, deleteMemberById);
+router.delete("/:id", deleteMemberById); //testing mdode, re-activate auth when token already usable
+// router.delete("/:id",verifyUser, deleteMemberById);
 
 //findById
 router.get("/:id", verifyUser, findMemberById);
