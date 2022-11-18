@@ -19,10 +19,11 @@ router.post('/',  createBike)
 
 // testing side
 router.put('/:id',  updateBike)
+router.delete('/:id', deleteBikeById)
 
 
 //Delete
-router.delete('/:id',verifyToken, verifyAdmin, deleteBikeById)
+// router.delete('/:id',verifyToken, verifyAdmin, deleteBikeById) //re-activate after testing or fixed login token
 
 
 //findById

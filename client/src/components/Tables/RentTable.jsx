@@ -13,6 +13,7 @@ import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
 
 import EditRentModal from "../../components/Modal/EditRentModal"
+import DeleteRentModal from "../../components/Modal/DeleteRentModal"
 
 const columns = [
   {
@@ -76,6 +77,7 @@ export default function StickyHeadTable() {
   console.log("data", data);
   let [parseData, setParseData] = useState()
   let [editModal, setEditModal] = useState(false);
+  let [deleteModal, setDeleteModal] = useState(false);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -91,6 +93,13 @@ export default function StickyHeadTable() {
 
   const onClickEdit = (data) => {
     setEditModal(true)
+    console.log(data);
+    setParseData(data)
+    console.log(parseData)
+  };
+
+  const onClickDelete = (data) => {
+    setDeleteModal(true)
     console.log(data);
     setParseData(data)
     console.log(parseData)
@@ -138,9 +147,12 @@ export default function StickyHeadTable() {
                       {editModal ? <>
                       <EditRentModal state={editModal} setState={setEditModal} data={parseData} />
                       </> : null}
-                      <button className="ml-1">
+                      <button className="ml-1" onClick={() => onClickDelete(row)}>
                         <img src={DeleteIcon} width="25px" />
                       </button>
+                      {deleteModal ? <>
+                      <DeleteRentModal state={deleteModal} setState={setDeleteModal} data={parseData} />
+                      </> : null}
                     </TableCell>
                   </TableRow>
                 );
