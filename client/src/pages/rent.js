@@ -1,17 +1,15 @@
-import React from "react";
-import Navbar from "./../components/Navbar/Navbar.jsx";
-import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx";
+import React from "react"
+import Navbar from "./../components/Navbar/Navbar.jsx"
+import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx"
 //import Footer from './../components/Footer.jsx'
 //import RentBikeModal from "./../components/Modal/RentBikeModal.jsx";
-
 
 const rent = () => {
   return (
     <>
-    //code sementara
+      {/* code sementara */}
       <Navbar />
       <div className="place-items-center text-white bgdefault w-full h-[910px]">
-        
         {/* --------- logo div start --------- */}
         <div className="pt-20 flex flex-col justify-center items-center font-semi-bold">
           <div id="RentTitle" className="flex">
@@ -25,11 +23,18 @@ const rent = () => {
         </div>
         {/* --------- logo div end ---------  */}
 
-
         {/* --------- dropdown location start ---------  */}
-        <label for="location" class="block mb-2 text-sm font-medium pt-16 text-center text-gray-900 dark:text-white">Select your Location</label>
+        <label
+          for="location"
+          class="block mb-2 text-sm font-medium pt-16 text-center text-gray-900 dark:text-white"
+        >
+          Select your Location
+        </label>
         <div className="max-w-[1256px] mx-auto px-4 rounded-[30px]">
-        <select id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <select
+            id="location"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
             <option>KPTU (Gedung Pusat)</option>
             <option>Perpustakaan UGM</option>
             <option>Gelanggang Mahasiswa</option>
@@ -44,7 +49,7 @@ const rent = () => {
             <option>Jl. Agro</option>
             <option>Fakultas Teknik (KPTU)</option>
             <option>Jl. Bhineka Tunggal Ika</option>
-        </select>
+          </select>
         </div>
         {/* --------- dropdown location end ---------  */}
 
@@ -53,7 +58,7 @@ const rent = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default rent;
+export default rent
