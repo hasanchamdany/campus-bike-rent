@@ -1,65 +1,65 @@
-import * as React from "react";
-import { useState } from "react";
+import * as React from "react"
+import { useState } from "react"
 import BtnForm from "../Buttons/BtnForm"
 import TxtInput from "../Inputs/TxtInput"
-import axios from "axios";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
-import { useNavigate } from "react-router-dom";
+import axios from "axios"
+import Snackbar from "@mui/material/Snackbar"
+import MuiAlert from "@mui/material/Alert"
+import { useNavigate } from "react-router-dom"
 
 const SignUpForm = () => {
-  const [inputs, setInputs] = useState({});
-  const navigate = useNavigate();
+  const [inputs, setInputs] = useState({})
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
+    const name = event.target.name
+    const value = event.target.value
+    setInputs((values) => ({ ...values, [name]: value }))
+  }
 
   const [alert, setAlert] = useState({
     open: false,
     vertical: "top",
     horizontal: "center",
-  });
-  const { vertical, horizontal, open } = alert;
+  })
+  const { vertical, horizontal, open } = alert
 
   const handleClose = () => {
-    setAlert({ ...alert, open: false });
-  };
+    setAlert({ ...alert, open: false })
+  }
 
   const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+  })
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(inputs);
+    event.preventDefault()
+    console.log(inputs)
 
     try {
       const res = axios
         .post("http://localhost:8800/api/auth/register", inputs)
         .then(function (response) {
-          console.log(response);
+          console.log(response)
           // console.log(response.data.token); //get token
           // localStorage.setItem("accessToken", response.data.token);
-          navigate("/auth/login");
+          navigate("/auth/login")
           // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
         })
         .catch(function (error) {
-          console.log(error);
+          console.log(error)
           // console.log(error.message)
           if (error.message === "Request failed with status code 400") {
             // setErrAlert(true)
 
-            setAlert({ open: true, vertical: "bottom", horizontal: "right" });
+            setAlert({ open: true, vertical: "bottom", horizontal: "right" })
           }
-        });
+        })
     } catch (error) {
-      console.log("error axios");
+      console.log("error axios")
     }
     // console.log("data = " + res)
-  };
+  }
   return (
     <>
       <div
@@ -70,15 +70,17 @@ const SignUpForm = () => {
         {/* start - div for Sign Up Title */}
         <div id="loginTitle" className="flex">
           <h1 className="text-4xl font-bold text-blue-dark">Sign up to B</h1>
-          <h1 className="text-4xl font-bold text-yellow-dark">i</h1>
-          <h1 className="text-4xl font-bold text-blue-dark">sa</h1>
+          <h1 className="text-4xl font-bold text-orange">i</h1>
+          <h1 className="text-4xl font-bold text-blue-dark">SA</h1>
         </div>
         {/* end - div for Sign Up Title */}
 
-        {/* start - div for Login alternative */} 
+        {/* start - div for Login alternative */}
         <div className="flex gap-x-1 font-normal mt-2 text-blue-dark">
           <p className="">Already a member?</p>
-          <button className="text-yellow-dark">Log In</button>
+          <a href="/auth/login">
+            <button className="text-yellow-dark">Log In</button>
+          </a>
         </div>
         {/* end - div for Login alternative */}
 
@@ -186,7 +188,7 @@ const SignUpForm = () => {
         </Alert>
       </Snackbar>
     </>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

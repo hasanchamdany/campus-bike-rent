@@ -11,7 +11,9 @@ const Home = () => {
       {/* <About className="flex flex-col items-center justify-center w-full" /> */}
       <div className="text-center text-white bgdefault w-full h-[910px]">
         <SidePageHome />
-        <About />
+        <div id="#about">
+          <About />
+        </div>
       </div>
     </>
   )
