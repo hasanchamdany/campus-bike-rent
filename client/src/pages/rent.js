@@ -1,9 +1,6 @@
 import React from "react";
 import Navbar from "./../components/Navbar/Navbar.jsx";
 import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx";
-//import Footer from './../components/Footer.jsx'
-//import RentBikeModal from "./../components/Modal/RentBikeModal.jsx";
-
 
 const rent = () => {
   return (
