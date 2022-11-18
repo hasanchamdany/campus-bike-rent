@@ -10,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import useFetch from "../../hooks/useFetch";
 import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
-import RentBikeModal from "../../components/Modal/RentBikeModal.jsx";
+//import RentBikeModal from "../../components/Modal/RentBikeModal.jsx";
 import ReactDOM from 'react-dom';
 
 const columns = [
