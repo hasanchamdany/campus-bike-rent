@@ -105,6 +105,8 @@ export default function StickyHeadTable(props) {
           <TableBody>
             {filtered
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .filter(row => row.availability === true )
+              .filter(row => row.borrowPeriod === "0")
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
