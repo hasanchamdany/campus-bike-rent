@@ -10,7 +10,9 @@ import TableRow from "@mui/material/TableRow";
 import useFetch from "../../hooks/useFetch";
 import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
-//import RentBikeModal from "../../components/Modal/RentBikeModal.jsx";
+
+// import RentBikeModal from "../../components/Modal/RentBikeModal.jsx";
+
 import ReactDOM from 'react-dom';
 
 const columns = [
@@ -46,9 +48,14 @@ const columns = [
   },
 ];
 
-export default function StickyHeadTable() {
+export default function StickyHeadTable(props) {
   const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
   console.log("data", data);
+  console.log(props.filter)
+  const [filteredData, setFilteredData] = useState(data)
+  
+  let filtered = data.filter(t=>t.location === props.filter.value)
+  console.log(filtered)
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -96,7 +103,7 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data
+            {filtered
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (

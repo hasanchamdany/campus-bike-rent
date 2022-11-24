@@ -1,14 +1,26 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./../components/Navbar/Navbar.jsx";
 import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx";
 //import Footer from './../components/Footer.jsx'
-//import RentBikeModal from "./../components/Modal/RentBikeModal.jsx";
+// import RentBikeModal from "./../components/Modal/RentBikeModal.jsx";
 
-const rent = () => {
+const Rent = () => {
+  const [optionFilter, setOptionFilter] = useState({value: ""});
+
+
+  const handleOptions = (props) => {
+    console.log("isi propsnya ini bg " + props.target.value)
+    setOptionFilter({value: props.target.value});
+    console.log( "isi state nya ini bg " + optionFilter.value)
+  };
+
+  console.log("ini option filter diluar handle" + optionFilter.value)
   return (
     <>
-      {/* code sementara */}
+
+      {/* //code sementara */}
+
       <Navbar />
       <div className="place-items-center text-white bgdefault w-full h-[910px]">
         {/* --------- logo div start --------- */}
@@ -27,39 +39,80 @@ const rent = () => {
         {/* --------- dropdown location start ---------  */}
         <label
           for="location"
-          class="block mb-2 text-sm font-medium pt-16 text-center text-gray-900 dark:text-white"
+
+          className="block mb-2 text-sm font-medium pt-16 text-center text-gray-900 dark:text-white"
+
         >
           Select your Location
         </label>
         <div className="max-w-[1256px] mx-auto px-4 rounded-[30px]">
           <select
             id="location"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
+            value={optionFilter.value} 
+            onChange={handleOptions}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option>KPTU (Gedung Pusat)</option>
-            <option>Perpustakaan UGM</option>
-            <option>Gelanggang Mahasiswa</option>
-            <option>Jl. Tevesia</option>
-            <option>Lembah UGM</option>
-            <option>Agro Fauna</option>
-            <option>UC Hotel</option>
-            <option>PAU</option>
-            <option>Biologi</option>
-            <option>Jl. Kesehatan</option>
-            <option>Vokasi</option>
-            <option>Jl. Agro</option>
-            <option>Fakultas Teknik (KPTU)</option>
-            <option>Jl. Bhineka Tunggal Ika</option>
+            <option name="KPTU (Gedung Pusat)" value="KPTU (Gedung Pusat)">
+              KPTU (Gedung Pusat)
+            </option>
+            <option name="Perpustakaan UGM" value="Perpustakaan UGM">
+              Perpustakaan UGM
+            </option>
+            <option name="Gelanggang Mahasiswa" value="Gelanggang Mahasiswa">
+              Gelanggang Mahasiswa
+            </option>
+            <option name="Jl. Tevesia" value="Jl. Tevesia">
+              Jl. Tevesia
+            </option>
+            <option name="Lembah UGM" value="Lembah UGM">
+              Lembah UGM
+            </option>
+            <option name="Agro Fauna" value="Agro Fauna">
+              Agro Fauna
+            </option>
+            <option name="UC Hotel" value="UC Hotel">
+              UC Hotel
+            </option>
+            <option name="Pau" value="pau">
+              PAU
+            </option>
+            <option name="Biologi" value="Biologi">
+              Biologi
+            </option>
+            <option name="Jl. Kesehatan" value="Jl. Kesehatan">
+              Jl. Kesehatan
+            </option>
+            <option name="Vokasi" value="Vokasi">
+              Vokasi
+            </option>
+            <option name=">Jl. Agro" value=">Jl. Agro">
+              Jl. Agro
+            </option>
+            <option
+              name="Fakultas Teknik (KPTU)"
+              value="Fakultas Teknik (KPTU)"
+            >
+              Fakultas Teknik (KPTU)
+            </option>
+            <option
+              name="Jl. Bhineka Tunggal Ika"
+              value="Jl. Bhineka Tunggal Ika"
+            >
+              Jl. Bhineka Tunggal Ika
+            </option>
+
           </select>
         </div>
         {/* --------- dropdown location end ---------  */}
 
         <div className="max-w-[1256px] mx-auto px-4 pt-16 rounded-[30px]">
-          <AvblBikeTable />
+          <AvblBikeTable filter={optionFilter}/>
         </div>
       </div>
     </>
   )
 }
 
-export default rent
+export default Rent;
+
