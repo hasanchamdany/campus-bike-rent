@@ -7,6 +7,8 @@ import MuiAlert from "@mui/material/Alert";
 const AddBikeModal = (props) => {
   const [inputs, setInputs] = useState({});
   const { state, setState } = props;
+
+  
   // console.log(state)
 
   const [alert, setAlert] = useState({
@@ -31,6 +33,7 @@ const AddBikeModal = (props) => {
   };
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
     console.log(inputs);
     axios
