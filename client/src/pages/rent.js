@@ -74,7 +74,7 @@ const Rent = () => {
             <option name="UC Hotel" value="UC Hotel">
               UC Hotel
             </option>
-            <option name="Pau" value="pau">
+            <option name="Pau" value="Pau">
               PAU
             </option>
             <option name="Biologi" value="Biologi">
@@ -86,7 +86,7 @@ const Rent = () => {
             <option name="Vokasi" value="Vokasi">
               Vokasi
             </option>
-            <option name=">Jl. Agro" value=">Jl. Agro">
+            <option name="Jl. Agro" value="Jl. Agro">
               Jl. Agro
             </option>
             <option
