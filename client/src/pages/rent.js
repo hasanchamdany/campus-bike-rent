@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Navbar from "./../components/Navbar/Navbar.jsx";
 import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx";
@@ -6,6 +7,7 @@ import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx";
 
 const Rent = () => {
   const [optionFilter, setOptionFilter] = useState({value: ""});
+
 
   const handleOptions = (props) => {
     console.log("isi propsnya ini bg " + props.target.value)
@@ -16,7 +18,9 @@ const Rent = () => {
   console.log("ini option filter diluar handle" + optionFilter.value)
   return (
     <>
+
       {/* //code sementara */}
+
       <Navbar />
       <div className="place-items-center text-white bgdefault w-full h-[910px]">
         {/* --------- logo div start --------- */}
@@ -35,13 +39,16 @@ const Rent = () => {
         {/* --------- dropdown location start ---------  */}
         <label
           for="location"
+
           className="block mb-2 text-sm font-medium pt-16 text-center text-gray-900 dark:text-white"
+
         >
           Select your Location
         </label>
         <div className="max-w-[1256px] mx-auto px-4 rounded-[30px]">
           <select
             id="location"
+
             value={optionFilter.value} 
             onChange={handleOptions}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -94,6 +101,7 @@ const Rent = () => {
             >
               Jl. Bhineka Tunggal Ika
             </option>
+
           </select>
         </div>
         {/* --------- dropdown location end ---------  */}
@@ -103,7 +111,8 @@ const Rent = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Rent;
+

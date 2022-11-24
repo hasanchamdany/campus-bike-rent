@@ -17,7 +17,7 @@ export default function SideCard() {
           </div>
           <div id="button rent" className="mt-6 lg:ml-24 h-f14 w-64 my-40">
             <button>
-              <a href="/profile">
+              <a href="/rent">
                 <img
                   src={button}
                   alt="rent now"
