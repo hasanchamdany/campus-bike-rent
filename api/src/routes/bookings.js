@@ -10,22 +10,22 @@ const router = express.Router();
 router.post("/", verifyToken, createBooking);
 
 //Update
-router.put("/:id",  updateBookingById); // testing mode, re-activate when auth token already accessible
-// router.put("/:id", verifyToken, updateBookingById);
+router.put("/:id", verifyToken, updateBookingById);
 router.put("/return/:id", verifyToken, returnBike)
 
 //Delete
-router.delete("/:id",  deleteBookingById); // testing mode, re-activate when auth token already accessible
-// router.delete("/:id", verifyToken, deleteBookingById);
+// router.delete("/:id",  deleteBookingById); // testing mode, re-activate when auth token already accessible
+router.delete("/:id", verifyToken, deleteBookingById);
 
 //findById
-router.get("/:id", verifyToken, findBookingById);
+// router.get("/:id", verifyToken, findBookingById);
+router.get("/:id",  findBookingById);
 
 //findAll
-// router.get("/", verifyToken, findAllBookings);
+router.get("/", verifyToken, findAllBookings);
 
 //testing site without verifyToken re-activate when login token has been created
-router.get("/", findAllBookings)
+// router.get("/", findAllBookings)
 
 router.get("/", async (req, res) => {
   res.send("hello this is booking router endpoint!");

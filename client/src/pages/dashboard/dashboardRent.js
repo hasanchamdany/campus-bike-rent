@@ -1,16 +1,43 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx";
 import RentTable from "../../components/Tables/RentTable.jsx";
 import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx";
 import useFetch from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const DashboardRent = () => {
-  const { data, loading, error } = useFetch(
-    "http://localhost:8800/api/booking"
-  );
-  console.log(data);
-  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        navigate("/");
+      } else {
+        const res = axios
+          .get(
+            "http://localhost:8800/api/member/" + localStorage.getItem("userID")
+          )
+          .then(function (response) {
+
+            if (response.data.isAdmin === false) {
+              navigate("/");
+            }
+            
+          })
+          .catch(function (error) {
+            console.log(error);
+            // console.log(error.message)
+          });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+  }, []);
+
   return (
     <>
       <Navbar />

@@ -5,9 +5,13 @@ import AdminBikeForm from "../../components/CRUDForm/AdminBikeForm.jsx";
 import BikeTable from "../../components/Tables/BikeTable.jsx";
 import PlusIcon from "../../assets/icon/plus-icon.png";
 import AddBikeModal from "../../components/Modal/AddBikeModal.jsx";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const DashboardBike = () => {
   const [showModal, setShowModal] = useState(false);
+  const token = localStorage.getItem("accessToken");
+  const navigate = useNavigate();
   useEffect(() => setShowModal(false), []);
   useEffect(() => {
     const close = (e) => {
@@ -18,6 +22,36 @@ const DashboardBike = () => {
     };
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
+  }, []);
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        navigate("/");
+      } else {
+        const res = axios
+          .get(
+            "http://localhost:8800/api/member/" + localStorage.getItem("userID")
+          )
+          .then(function (response) {
+            // console.log("isi response ");
+            // console.log(response.data);
+
+            if (response.data.isAdmin === false) {
+              navigate("/");
+            }
+            // console.log("isi data user " + response.data.user._id);
+            // navigate("/");
+            // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
+          })
+          .catch(function (error) {
+            console.log(error);
+            // console.log(error.message)
+          });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
   return (
     <>

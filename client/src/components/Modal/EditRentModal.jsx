@@ -6,6 +6,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 const EditRentModal = (props) => {
+  const token = localStorage.getItem('accessToken')
   const { state, setState } = props;
   const [alert, setAlert] = useState({
     open: false,
@@ -40,7 +41,7 @@ const EditRentModal = (props) => {
     console.log(inputs);
     console.log(props.data._id);
     axios
-      .put("http://localhost:8800/api/booking/" + props.data._id, inputs)
+      .put("http://localhost:8800/api/booking/" + props.data._id , inputs, { headers: {"Authorization" : `Bearer ${token}`} })
       .then(function (response) {
         console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });

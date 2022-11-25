@@ -6,6 +6,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
 const DeleteRentModal = (props) => {
+  const token = localStorage.getItem('accessToken')
   const { state, setState } = props;
   console.log(props);
 
@@ -42,7 +43,7 @@ const DeleteRentModal = (props) => {
     console.log(inputs);
     console.log(props.data._id);
     axios
-      .delete("http://localhost:8800/api/booking/" + props.data._id, inputs)
+      .delete("http://localhost:8800/api/booking/" + props.data._id, { headers: {"Authorization" : `Bearer ${token}`} })
       .then(function (response) {
         console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });

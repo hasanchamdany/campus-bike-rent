@@ -44,6 +44,9 @@ export default function Form() {
           console.log(response);
           console.log(response.data.token); //get token
           localStorage.setItem("accessToken", response.data.token);
+          localStorage.setItem("userID", response.data.user._id)
+          localStorage.setItem("userStatus", response.data.user.isAdmin)
+          // console.log("isi data user " + response.data.user._id);
           navigate("/");
           // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
         })

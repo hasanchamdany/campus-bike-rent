@@ -8,26 +8,51 @@ import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx";
 import axios from "axios";
 import PlusIcon from "../../assets/icon/plus-icon.png";
 import AddMemberModal from "../../components/Modal/AddMemberModal.jsx";
+import { useNavigate } from "react-router-dom";
 
 const DashboardMember = () => {
-  const { data, loading, error } = useFetch("http://localhost:8800/api/member");
-  console.log(data);
-  // const axios = require("axios");
-  // axios.get('http://localhost:8800/api/bike')
-  // .then(function (response) {
-  //   // handle success
-  //   // const data = response.map()
-  //   console.log(response);
-  //   // console.log(data)
-  // })
-  // .catch(function (error) {
-  //   // handle error
-  //   console.log(error);
-  // })
-  // .then(function () {
-  //   // always executed
-  // });
+  // const { data, loading, error } = useFetch("http://localhost:8800/api/member");
+  // console.log(data);
+
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("accessToken");
+      if (!token) {
+        navigate("/");
+      } else {
+        const res = axios
+          .get(
+            "http://localhost:8800/api/member/" + localStorage.getItem("userID")
+          )
+          .then(function (response) {
+            // console.log("isi response ");
+            // console.log(response.data);
+
+            if (response.data.isAdmin === false) {
+              navigate("/");
+            }
+            // console.log("isi data user " + response.data.user._id);
+            // navigate("/");
+            // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
+          })
+          .catch(function (error) {
+            console.log(error);
+            // console.log(error.message)
+          });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    // const token = localStorage.getItem("accessToken");
+    // const userData = localStorage.getItem("userData");
+    // console.log("token dari dashboard bike " + token);
+    // console.log("isi data user local storage " + userData);
+  }, []);
+
   useEffect(() => setShowModal(false), []);
   return (
     <>
