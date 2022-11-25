@@ -1,24 +1,32 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./../components/Navbar/Navbar.jsx";
 import AvblBikeTable from "./../components/Tables/AvblBikeTable.jsx";
+import { useNavigate } from "react-router-dom";
 //import Footer from './../components/Footer.jsx'
 // import RentBikeModal from "./../components/Modal/RentBikeModal.jsx";
 
 const Rent = () => {
-  const [optionFilter, setOptionFilter] = useState({value: ""});
-
+  const [optionFilter, setOptionFilter] = useState({ value: "" });
+  const navigate = useNavigate();
 
   const handleOptions = (props) => {
-    console.log("isi propsnya ini bg " + props.target.value)
-    setOptionFilter({value: props.target.value});
-    console.log( "isi state nya ini bg " + optionFilter.value)
+    setOptionFilter({ value: props.target.value });
   };
 
-  console.log("ini option filter diluar handle" + optionFilter.value)
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("accessToken")
+      console.log( "ini token dari local storage: " + token );
+      if(!token){
+        navigate("/")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  });
+
   return (
     <>
-
       {/* //code sementara */}
 
       <Navbar />
@@ -39,17 +47,14 @@ const Rent = () => {
         {/* --------- dropdown location start ---------  */}
         <label
           for="location"
-
           className="block mb-2 text-sm font-medium pt-16 text-center text-gray-900 dark:text-white"
-
         >
           Select your Location
         </label>
         <div className="max-w-[1256px] mx-auto px-4 rounded-[30px]">
           <select
             id="location"
-
-            value={optionFilter.value} 
+            value={optionFilter.value}
             onChange={handleOptions}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
@@ -101,18 +106,16 @@ const Rent = () => {
             >
               Jl. Bhineka Tunggal Ika
             </option>
-
           </select>
         </div>
         {/* --------- dropdown location end ---------  */}
 
         <div className="max-w-[1256px] mx-auto px-4 pt-16 rounded-[30px]">
-          <AvblBikeTable filter={optionFilter}/>
+          <AvblBikeTable filter={optionFilter} />
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Rent;
-

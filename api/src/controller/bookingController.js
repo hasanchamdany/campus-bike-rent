@@ -122,10 +122,12 @@ export const deleteBookingById = async (req, res, next) => {
 //findById
 export const findBookingById = async (req, res, next) => {
   try {
-    const Bookings = await Booking.findById(req.params.id);
+    // const Bookings = await Booking.findById(req.params.id);
+    const Bookings = await Booking.findOne({memberId: req.params.id});
     res.status(200).json(Bookings);
   } catch (err) {
     res.status(500).json(err);
+    console.error(err)
   }
 };
 

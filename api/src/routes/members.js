@@ -32,8 +32,8 @@ router.delete("/:id", deleteMemberById); //testing mdode, re-activate auth when 
 router.get("/:id", findMemberById);
 
 //findAll
-router.get("/",  findAllMembers); //testing mode
-// router.get("/", verifyAdmin, findAllMembers);
+router.get("/", verifyAdmin, findAllMembers);
+
 
 router.get("/", async (req, res) => {
   res.send("hello this is member router endpoint!");
