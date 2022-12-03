@@ -1,7 +1,21 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
-  const [navbar, setNavbar] = useState(false)
+  const [navbar, setNavbar] = useState(false);
+  const navigate = useNavigate();
+  const token = localStorage.getItem("accessToken");
+  // if(!token){
+  //   button =
+  // }
+  const handleLogOut = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userStatus");
+    localStorage.removeItem("userID");
+    
+      navigate("/")
+    
+  }
 
   return (
     <nav className="w-full bg-blue-nav shadow">
@@ -71,37 +85,60 @@ export default function NavBar() {
               </ul>
 
               <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-                <a
-                  href="/auth/login"
-                  className="inline-block w-full px-4 py-2 text-center text-white bg-blue-900 rounded-md shadow hover:bg-gray-800"
-                >
-                  Log In
-                </a>
-                <a
-                  href="/"
-                  className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                >
-                  Sign Up
-                </a>
+                {token ? (
+                  <>
+                    <button 
+                    onClick={handleLogOut}
+                    className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100">
+                      Log Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href="/auth/login"
+                      className="inline-block w-full px-4 py-2 text-center text-white bg-blue-900 rounded-md shadow hover:bg-gray-800"
+                    >
+                      Log In
+                    </a>
+                    <a
+                      href="/auth/signup"
+                      className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                    >
+                      Sign Up
+                    </a>
+                  </>
+                )}
               </div>
             </div>
           </div>
           <div className="hidden space-x-2 md:inline-block">
-            <a
-              href="/auth/login"
-              className="px-6 py-2 text-white bg-blue-900 rounded-md shadow hover:bg-blue-600"
-            >
-              Log In
-            </a>
-            <a
-              href="/auth/signup"
-              className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-            >
-              Sign Up
-            </a>
+            {token ? (
+              <button
+                onClick={handleLogOut}
+                className="px-6 py-2 text-white bg-blue-900 rounded-md shadow hover:bg-blue-600"
+              >
+                Log Out
+              </button>
+            ) : (
+              <>
+                <a
+                  href="/auth/login"
+                  className="px-6 py-2 text-white bg-blue-900 rounded-md shadow hover:bg-blue-600"
+                >
+                  Log In
+                </a>
+                <a
+                  href="/auth/signup"
+                  className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                >
+                  Sign Up
+                </a>
+              </>
+            )}
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }

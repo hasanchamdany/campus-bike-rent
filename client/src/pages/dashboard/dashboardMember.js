@@ -34,9 +34,7 @@ const DashboardMember = () => {
             if (response.data.isAdmin === false) {
               navigate("/");
             }
-            // console.log("isi data user " + response.data.user._id);
-            // navigate("/");
-            // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
+
           })
           .catch(function (error) {
             console.log(error);
@@ -47,10 +45,6 @@ const DashboardMember = () => {
       console.log(err);
     }
 
-    // const token = localStorage.getItem("accessToken");
-    // const userData = localStorage.getItem("userData");
-    // console.log("token dari dashboard bike " + token);
-    // console.log("isi data user local storage " + userData);
   }, []);
 
   useEffect(() => setShowModal(false), []);
