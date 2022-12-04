@@ -31,10 +31,13 @@ const AddMemberModal = (props) => {
   };
 
   const handleSubmit = (event) => {
+    const token = localStorage.getItem("accessToken");
     event.preventDefault();
     console.log(inputs);
     axios
-      .post("http://localhost:8800/api/auth/register", inputs)
+      .post("http://localhost:8800/api/auth/register", inputs, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(function (response) {
         console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });

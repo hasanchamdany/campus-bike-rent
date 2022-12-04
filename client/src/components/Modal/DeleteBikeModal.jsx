@@ -38,11 +38,14 @@ const DeleteBikeModal = (props) => {
   };
 
   const handleSubmit = (event) => {
+    const token = localStorage.getItem("accessToken");
     event.preventDefault();
     console.log(inputs);
     console.log(props.data._id);
     axios
-      .delete("http://localhost:8800/api/bike/" + props.data._id, inputs)
+      .delete("http://localhost:8800/api/bike/" + props.data._id, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(function (response) {
         console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });
@@ -63,8 +66,10 @@ const DeleteBikeModal = (props) => {
                 {/*header*/}
                 <div className="w-[400px] flex">
                   <div className="mt-4 mb-6 align-center mx-auto">
-                    <h1 className="text-center font-bold text-xl">DELETE BIKE</h1>
-                    
+                    <h1 className="text-center font-bold text-xl">
+                      DELETE BIKE
+                    </h1>
+
                     <div className="flex justify-between">
                       <button
                         type="submit"
