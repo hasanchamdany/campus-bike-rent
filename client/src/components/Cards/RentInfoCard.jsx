@@ -1,10 +1,16 @@
 import helloBike from "../../assets/Images/hello-bike.webp";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ReturnModal from "../../components/Modal/ReturnModal";
 
 const RentInfoCard = () => {
   const userId = localStorage.getItem("userID");
   const token = localStorage.getItem("accessToken");
+  const [rentState, setRentState] = useState(false);
+
+  const [button, setButton] = useState(false);
+
+  let [returnModal, setReturnModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [rentData, setRentData] = useState([]);
   useEffect(() => {
@@ -14,7 +20,16 @@ const RentInfoCard = () => {
       })
       .then(function (response) {
         //   const userData = response.data;
-        setRentData(response.data);
+        if (response.data !== null) {
+          setRentData(response.data);
+          if (response.data.returnedStatus) {
+            setRentState(true);
+          } else {
+            setRentState(false);
+          }
+        } else if (response.data !== undefined) {
+          setButton(true);
+        }
         console.log(response);
         // console.log(rentData);
         // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
@@ -22,12 +37,20 @@ const RentInfoCard = () => {
       .catch(function (error) {
         setLoading(true);
         console.log(error);
+        return;
       });
   }, []);
+
+  const onClickReturn = (data) => {
+    setReturnModal(true);
+    console.log(data);
+    // setParseData(data)
+    // console.log(parseData)
+  };
+
   return (
     <>
       {/* {console.log(rentData)} */}
-
       <div className="w-[986px] bg-white rounded-md p-4 flex flex-col">
         <div
           id="Hello"
@@ -43,33 +66,65 @@ const RentInfoCard = () => {
           ></img>
         </div>
         <div id="Name" className="text-2xl font-bold text-center">
-          Bike #XXXXXX
+          Bike #{rentData._id}
         </div>
 
         <div className="grid grid-cols-3">
           <div className="px-4 py-2 font-semibold">Lokasi Pengambilan</div>
-          <div className="px-4 py-2">: GSP</div>
+          <div className="px-4 py-2">: {rentData.location || ""}</div>
         </div>
 
         <div className="grid grid-cols-3">
           <div className="px-4 py-2 font-semibold">Tanggal Pengambilan</div>
-          <div className="px-4 py-2">: 15 November 2022</div>
+          <div className="px-4 py-2">: {rentData.DateTake || ""}</div>
         </div>
 
         <div className="grid grid-cols-3">
-          <div className="px-4 py-2 font-semibold">Jam Pengambilan</div>
-          <div className="px-4 py-2">: 23:00</div>
+          <div className="px-4 py-2 font-semibold">Durasi (Jam)</div>
+          <div className="px-4 py-2">: {rentData.jam || ""}</div>
         </div>
 
         <div className="grid grid-cols-3">
           <div className="px-4 py-2 font-semibold">Status Pengembalian</div>
-          <div className="px-4 py-2">: Belum Dikembalikan</div>
+          <div className="px-4 py-2">
+            {rentData.returnedStatus
+              ? "Sudah dikembalikan"
+              : "Belum dikembalikan"}
+          </div>
         </div>
 
         <div class="ml-auto">
-          <button class="mx-auto h-10 px-10 m-2 text-white text-2xl transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800">
-            Return Bike!
-          </button>
+          {rentState ? (
+            <>
+              <button
+                onClick={() => onClickReturn(rentData)}
+                disabled={button}
+                class="mx-auto h-10 px-10 m-2 text-white text-2xl transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800"
+              >
+                Rent Now!
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => onClickReturn(rentData)}
+                disabled={button}
+                class="mx-auto h-10 px-10 m-2 text-white text-2xl transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800"
+              >
+                Return Bike!
+              </button>
+            </>
+          )}
+
+          {returnModal ? (
+            <>
+              <ReturnModal
+                state={returnModal}
+                setState={setReturnModal}
+                data={rentData}
+              />
+            </>
+          ) : null}
         </div>
       </div>
     </>
