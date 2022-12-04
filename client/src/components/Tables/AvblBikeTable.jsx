@@ -11,9 +11,11 @@ import useFetch from "../../hooks/useFetch";
 import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
 
+import RentModal from "../../components/Modal/RentModal.jsx";
+
 // import RentBikeModal from "../../components/Modal/RentBikeModal.jsx";
 
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
 const columns = [
   {
@@ -51,11 +53,13 @@ const columns = [
 export default function StickyHeadTable(props) {
   const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
   console.log("data", data);
-  console.log(props.filter)
-  const [filteredData, setFilteredData] = useState(data)
-  
-  let filtered = data.filter(t=>t.location === props.filter.value)
-  console.log(filtered)
+  console.log(props.filter);
+  const [filteredData, setFilteredData] = useState(data);
+  const [rentModal, setRentModal] = useState(false);
+  let [parseData, setParseData] = useState();
+
+  let filtered = data.filter((t) => t.location === props.filter.value);
+  console.log(filtered);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -69,7 +73,18 @@ export default function StickyHeadTable(props) {
     setPage(0);
   };
 
-  {/*const [showModal, setShowModal] = useState(false);
+  const onClickRent = (data) => {
+    setRentModal(true);
+    console.log(data);
+    setParseData(data);
+    console.log(parseData);
+    // return(
+    //   <EditBikeModal state={editModal} setState={setEditModal} placeholder={data} />
+    // )
+  };
+
+  {
+    /*const [showModal, setShowModal] = useState(false);
   useEffect(() => setShowModal(false), []);
   useEffect(() => {
     const close = (e) => {
@@ -80,80 +95,94 @@ export default function StickyHeadTable(props) {
     };
     window.addEventListener("keydown", close);
     return () => window.removeEventListener("keydown", close);
-  }, []);*/}
+  }, []);*/
+  }
 
   return (
-
-  <div>
-
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filtered
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .filter(row => row.availability === true )
-              .filter(row => row.borrowPeriod === "0")
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          { 
-                          columns.filter(value => value.location === 'Perpustakaan UGM')
-                          //.map(task => <li key={task.taskId}>{task.taskName}</li>) 
-                          //column.filter &&
-                          //(column.availability === "false" ||
-                            //column.borrowPeriod === "0")
-                          }
-                          {column.format &&
-                          (typeof value === "number" ||
-                            typeof value === "boolean")
-                            ? column.format(value)
-                            : value
-                          }
-
-                        </TableCell>
-                      );
-                    })}
-                    <TableCell>
-                    <button
-                      className=" outline outline-2 outline-blue-dark w-[100px] h-[30px] bg-blue-dark text-white rounded-[10px]"
-                      >
-                      <p className="inline"> Rent/Book</p>
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={data.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
-  </div>
+    <div>
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <TableContainer sx={{ maxHeight: 440 }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{ minWidth: column.minWidth }}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {filtered
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .filter((row) => row.availability === true)
+                .filter((row) => row.borrowPeriod === "0")
+                .map((row) => {
+                  return (
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      tabIndex={-1}
+                      key={row.code}
+                    >
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {
+                              columns.filter(
+                                (value) => value.location === "Perpustakaan UGM"
+                              )
+                              //.map(task => <li key={task.taskId}>{task.taskName}</li>)
+                              //column.filter &&
+                              //(column.availability === "false" ||
+                              //column.borrowPeriod === "0")
+                            }
+                            {column.format &&
+                            (typeof value === "number" ||
+                              typeof value === "boolean")
+                              ? column.format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                      <TableCell>
+                        <button
+                          onClick={() => onClickRent(row)}
+                          className=" outline outline-2 outline-blue-dark w-[100px] h-[30px] bg-blue-dark text-white rounded-[10px]"
+                        >
+                          <p className="inline"> Rent/Book</p>
+                        </button>
+                        {rentModal ? (
+                          <>
+                            <RentModal
+                              state={rentModal}
+                              setState={setRentModal}
+                              data={parseData}
+                            />
+                          </>
+                        ) : null}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={data.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </div>
   );
 }

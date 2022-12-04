@@ -7,8 +7,8 @@ import MuiAlert from "@mui/material/Alert";
 const AddBikeModal = (props) => {
   const [inputs, setInputs] = useState({});
   const { state, setState } = props;
+  const token = localStorage.getItem("accessToken");
 
-  
   // console.log(state)
 
   const [alert, setAlert] = useState({
@@ -33,11 +33,12 @@ const AddBikeModal = (props) => {
   };
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
     console.log(inputs);
     axios
-      .post("http://localhost:8800/api/bike", inputs)
+      .post("http://localhost:8800/api/bike", inputs, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(function (response) {
         console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });

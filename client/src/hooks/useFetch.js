@@ -5,18 +5,20 @@ const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const token = localStorage.getItem('accessToken')
+  const token = localStorage.getItem("accessToken");
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(url, { headers: {"Authorization" : `Bearer ${token}`} });
+        const res = await axios.get(url, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         setData(res.data);
       } catch (err) {
         setError(err);
       }
-      setLoading(false)
+      setLoading(false);
     };
     fetchData();
   }, [url]);
@@ -24,14 +26,16 @@ const useFetch = (url) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setData(res.data);
     } catch (err) {
       setError(err);
     }
-    setLoading(false)
+    setLoading(false);
   };
-  return {data, loading, error, reFetch}
+  return { data, loading, error, reFetch };
 };
 
 export default useFetch;

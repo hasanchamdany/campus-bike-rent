@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PlusIcon from "../../assets/icon/plus-icon.png";
-import EditIcon from "../../assets/icon/edit-icon-white.png";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
-const EditBikeModal = (props) => {
+const RentModal = (props) => {
   const { state, setState } = props;
+  console.log("ini isi props");
   console.log(props);
+
+  const userId = localStorage.getItem("userID");
+  const token = localStorage.getItem("accessToken");
 
   const [alert, setAlert] = useState({
     open: false,
@@ -25,10 +27,11 @@ const EditBikeModal = (props) => {
   });
 
   const [inputs, setInputs] = useState({
-    availability: props.data.availibility,
-    borrowPeriod: props.data.borrowPeriod,
-    condition: props.data.condition,
+    bikeId: props.data._id,
+    memberId: userId,
+    DateTake: props.data.date,
     location: props.data.location,
+    returnedStatus: false,
   });
 
   const handleChange = (event) => {
@@ -41,9 +44,9 @@ const EditBikeModal = (props) => {
     const token = localStorage.getItem("accessToken");
     event.preventDefault();
     console.log(inputs);
-    console.log(props.data._id);
+    // console.log(props.data._id);
     axios
-      .put("http://localhost:8800/api/bike/" + props.data._id, inputs, {
+      .post("http://localhost:8800/api/booking", inputs, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(function (response) {
@@ -54,6 +57,7 @@ const EditBikeModal = (props) => {
         console.log(error);
       });
   };
+
   return (
     <>
       {state && (
@@ -65,41 +69,24 @@ const EditBikeModal = (props) => {
                 {/*header*/}
                 <div className="w-[400px] flex">
                   <div className="mt-4 mb-6 align-center mx-auto">
-                    <h1 className="text-center font-bold text-xl">EDIT BIKE</h1>
+                    <h1 className="text-center font-bold text-xl">RENT BIKE</h1>
                     <form onSubmit={handleSubmit} className="block ">
                       <input
-                        name="availability"
+                        name="DateTake"
                         required
-                        placeholder="Availability"
-                        type="text"
-                        value={inputs.availability || ""}
+                        placeholder="Date Take"
+                        type="date"
+                        value={inputs.DateTake || ""}
                         onChange={handleChange}
                         className=" block outline outline-2 outline-blue-dark mx-1 mt-4 px-2 py-1 w-[232px] rounded-[10px] text-black"
                       />
+
                       <input
-                        name="borrowPeriod"
+                        name="jam"
                         required
-                        placeholder="Borrow Period"
+                        placeholder="jam"
                         type="text"
-                        value={inputs.borrowPeriod || ""}
-                        onChange={handleChange}
-                        className=" block outline outline-2 outline-blue-dark mx-1 mt-4 px-2 py-1 w-[232px] rounded-[10px] text-black"
-                      />
-                      <input
-                        name="condition"
-                        required
-                        placeholder="Condition"
-                        type="text"
-                        value={inputs.condition || ""}
-                        onChange={handleChange}
-                        className=" block outline outline-2 outline-blue-dark mx-1 mt-4 px-2 py-1 w-[232px] rounded-[10px] text-black"
-                      />
-                      <input
-                        name="location"
-                        required
-                        placeholder="Location"
-                        type="text"
-                        value={inputs.location || ""}
+                        value={inputs.jam || ""}
                         onChange={handleChange}
                         className=" block outline outline-2 outline-blue-dark mx-1 mt-4 px-2 py-1 w-[232px] rounded-[10px] text-black"
                       />
@@ -117,12 +104,12 @@ const EditBikeModal = (props) => {
                           className="flex justify-center outline outline-2 outline-blue-dark mx-1 mt-6 px-3 py-2 w-fit bg-blue-dark text-white rounded-[10px]"
                           onClick={handleSubmit}
                         >
-                          <img
-                            src={EditIcon}
-                            className=" w-[25px] mr-1"
-                            width={25}
-                          />
-                          <p className="mr-1"> Edit Data</p>
+                          {/* <img
+                              src={EditIcon}
+                              className=" w-[25px] mr-1"
+                              width={25}
+                            /> */}
+                          <p className="mr-1"> Quick Rent</p>
                         </button>
                       </div>
                     </form>
@@ -148,5 +135,4 @@ const EditBikeModal = (props) => {
     </>
   );
 };
-
-export default EditBikeModal;
+export default RentModal;
