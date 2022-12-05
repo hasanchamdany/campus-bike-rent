@@ -14,6 +14,16 @@
     font-style: bold;
   }
 }
+body {
+  background: linear-gradient(
+    90deg,
+    #3a73d0 0%,
+    #1f3673 99.97%,
+    rgba(24, 79, 168, 0.0102906) 99.98%,
+    rgba(24, 79, 168, 0.00520833) 99.99%,
+    #3b6cbb 100%
+  );
+}
 
 .navbarbg {
   /* background: linear-gradient(180deg, #26468B 0%, rgba(38, 70, 139, 0) 100%); */
