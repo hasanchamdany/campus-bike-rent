@@ -56,7 +56,9 @@ const EditProfileCard = () => {
     console.log(inputs);
     console.log(userData._id);
     axios
-      .put("http://localhost:8800/api/member/" + userId, inputs)
+      .put("http://localhost:8800/api/member/" + userId, inputs, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(function (response) {
         console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });
