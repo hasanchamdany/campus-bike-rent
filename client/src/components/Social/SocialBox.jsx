@@ -10,7 +10,7 @@ export default function SocialBox() {
   return (
     <>
       <h4 className="text-xl">Follow us on</h4>
-      <div className="flex flex-row gap-4 m-4">
+      <div className="flex flex-row gap-4 m-4 mb-16">
         <SocialButton
           socialLink="https://www.twitter.com"
           socialImg={twitter}

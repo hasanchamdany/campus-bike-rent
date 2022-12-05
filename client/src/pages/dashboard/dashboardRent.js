@@ -1,48 +1,45 @@
-import React, {useEffect} from "react";
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx";
-import RentTable from "../../components/Tables/RentTable.jsx";
-import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx";
-import useFetch from "../../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect } from "react"
+import Navbar from "../../components/Navbar/Navbar.jsx"
+import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx"
+import RentTable from "../../components/Tables/RentTable.jsx"
+import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx"
+import useFetch from "../../hooks/useFetch"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const DashboardRent = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     try {
-      const token = localStorage.getItem("accessToken");
+      const token = localStorage.getItem("accessToken")
       if (!token) {
-        navigate("/");
+        navigate("/")
       } else {
         const res = axios
           .get(
             "http://localhost:8800/api/member/" + localStorage.getItem("userID")
           )
           .then(function (response) {
-
             if (response.data.isAdmin === false) {
-              navigate("/");
+              navigate("/")
             }
-            
           })
           .catch(function (error) {
-            console.log(error);
+            console.log(error)
             // console.log(error.message)
-          });
+          })
       }
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-
-  }, []);
+  }, [])
 
   return (
     <>
       <Navbar />
       <div className=" text-white bgdefault w-full h-[910px]">
-        <div className=" pt-16 text-3xl font-bold font-Inter justify-left ml-24">
+        <div className="flex justify-center items-center pt-16 text-3xl font-bold font-Inter justify-left">
           Hello, <span className=" text-orange">Admins</span>
         </div>
         <NavbarDash />
@@ -55,7 +52,7 @@ const DashboardRent = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default DashboardRent;
+export default DashboardRent

@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx";
-import AdminBikeForm from "../../components/CRUDForm/AdminBikeForm.jsx";
-import BikeTable from "../../components/Tables/BikeTable.jsx";
-import PlusIcon from "../../assets/icon/plus-icon.png";
-import AddBikeModal from "../../components/Modal/AddBikeModal.jsx";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import Navbar from "../../components/Navbar/Navbar.jsx"
+import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx"
+import AdminBikeForm from "../../components/CRUDForm/AdminBikeForm.jsx"
+import BikeTable from "../../components/Tables/BikeTable.jsx"
+import PlusIcon from "../../assets/icon/plus-icon.png"
+import AddBikeModal from "../../components/Modal/AddBikeModal.jsx"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const DashboardBike = () => {
-  const [showModal, setShowModal] = useState(false);
-  const token = localStorage.getItem("accessToken");
-  const navigate = useNavigate();
-  useEffect(() => setShowModal(false), []);
+  const [showModal, setShowModal] = useState(false)
+  const token = localStorage.getItem("accessToken")
+  const navigate = useNavigate()
+  useEffect(() => setShowModal(false), [])
   useEffect(() => {
     const close = (e) => {
       if (e.keyCode === "Escape") {
         // e.onCloseModal()
-        setShowModal(false);
+        setShowModal(false)
       }
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, []);
+    }
+    window.addEventListener("keydown", close)
+    return () => window.removeEventListener("keydown", close)
+  }, [])
   useEffect(() => {
     try {
-      const token = localStorage.getItem("accessToken");
+      const token = localStorage.getItem("accessToken")
       if (!token) {
-        navigate("/");
+        navigate("/")
       } else {
         const res = axios
           .get(
@@ -38,33 +38,33 @@ const DashboardBike = () => {
             // console.log(response.data);
 
             if (response.data.isAdmin === false) {
-              navigate("/");
+              navigate("/")
             }
             // console.log("isi data user " + response.data.user._id);
             // navigate("/");
             // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
           })
           .catch(function (error) {
-            console.log(error);
+            console.log(error)
             // console.log(error.message)
-          });
+          })
       }
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  }, []);
+  }, [])
   return (
     <>
       <Navbar />
       <div className=" text-white bgdefault w-full h-[910px]">
-        <div className=" pt-16 text-3xl font-bold font-Inter justify-left ml-24">
+        <div className="flex justify-center items-center pt-16 text-3xl font-bold font-Inter justify-left">
           Hello, <span className=" text-orange">Admins</span>
         </div>
         <NavbarDash />
         <div className="max-w-[1240px] h-[75px]  mx-auto rounded-xl flex justify-end">
           {/* <AdminBikeForm /> */}
           <button
-            className=" outline outline-2 outline-blue-dark mx-1 mt-8 px-2 py-1 w-[150px] h-[40px] bg-blue-dark text-white rounded-[10px]"
+            className=" outline outline-2 outline-blue-dark mx-6 mt-8 px-2 py-1 w-[150px] h-[40px] bg-blue-dark text-white rounded-[10px]"
             onClick={() => setShowModal(true)}
           >
             <img src={PlusIcon} className="inline w-[25px] mr-2" />
@@ -80,7 +80,7 @@ const DashboardBike = () => {
         <AddBikeModal state={showModal} setState={setShowModal} />
       ) : null}
     </>
-  );
-};
+  )
+}
 
-export default DashboardBike;
+export default DashboardBike
