@@ -51,7 +51,7 @@ const RentInfoCard = () => {
   return (
     <>
       {/* {console.log(rentData)} */}
-      <div className="mx-8 mt-2 mb-12 md:w-5/6 lg:w-[986px] bg-white rounded-md py-6 px-14 flex flex-col">
+      <div className="mx-8 mt-2 mb-52 w-9/12 md:w-5/6 lg:w-[986px] bg-white rounded-md py-6 px-14 flex flex-col">
         <div
           id="Hello"
           className="text-center text-3xl lg:text-5xl font-extrabold text-blue-700 text-left mb-4"

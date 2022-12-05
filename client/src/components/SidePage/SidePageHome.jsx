@@ -40,12 +40,12 @@ export default function SideCard() {
       </div>
       {/* main end */}
       <div>
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mt-24 mb-8">
           <button>
             <img
               src={viewMore}
               alt="view more"
-              className="hover:scale-[1.02] ease-in-out rounded-xl w-9/12 h-9/12 m-auto"
+              className="hover:scale-[1.02] ease-in-out rounded-xl w-9/12 h-9/12 m-auto mb-16"
             ></img>
           </button>
         </div>
