@@ -103,7 +103,6 @@ const DeleteBikeModal = (props) => {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        // message="Data has been Updated"
         key={vertical + horizontal}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
