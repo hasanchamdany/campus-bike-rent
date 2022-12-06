@@ -1,65 +1,53 @@
-import * as React from "react"
-import { useState } from "react"
-import BtnForm from "../Buttons/BtnForm"
-import TxtInput from "../Inputs/TxtInput"
-import axios from "axios"
-import Snackbar from "@mui/material/Snackbar"
-import MuiAlert from "@mui/material/Alert"
-import { useNavigate } from "react-router-dom"
+import * as React from "react";
+import { useState } from "react";
+import axios from "axios";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
-  const [inputs, setInputs] = useState({})
-  const navigate = useNavigate()
+  const [inputs, setInputs] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
-    const name = event.target.name
-    const value = event.target.value
-    setInputs((values) => ({ ...values, [name]: value }))
-  }
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
 
   const [alert, setAlert] = useState({
     open: false,
     vertical: "top",
     horizontal: "center",
-  })
-  const { vertical, horizontal, open } = alert
+  });
+  const { vertical, horizontal, open } = alert;
 
   const handleClose = () => {
-    setAlert({ ...alert, open: false })
-  }
+    setAlert({ ...alert, open: false });
+  };
 
   const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
-  })
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log(inputs)
+    event.preventDefault();
 
     try {
       const res = axios
         .post("http://localhost:8800/api/auth/register", inputs)
         .then(function (response) {
-          console.log(response)
-          // console.log(response.data.token); //get token
-          // localStorage.setItem("accessToken", response.data.token);
-          navigate("/auth/login")
-          // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
+          navigate("/auth/login");
         })
         .catch(function (error) {
-          console.log(error)
-          // console.log(error.message)
           if (error.message === "Request failed with status code 400") {
-            // setErrAlert(true)
-
-            setAlert({ open: true, vertical: "bottom", horizontal: "right" })
+            setAlert({ open: true, vertical: "bottom", horizontal: "right" });
           }
-        })
+        });
     } catch (error) {
-      console.log("error axios")
+      console.log("error axios");
     }
-    // console.log("data = " + res)
-  }
+  };
   return (
     <>
       <div
@@ -116,7 +104,6 @@ const SignUpForm = () => {
                   placeholder="janedoe@xxx.com"
                 />
               </div>
-              {/* <TxtInputMd inputLabel="Email" placeholderText="janedoe@xxx.com" /> */}
               <div className="flex flex-col gap-y-0.5">
                 <label className="text-lg font-medium text-blue-dark">
                   Password
@@ -130,11 +117,6 @@ const SignUpForm = () => {
                   placeholder="janedoe12813279"
                 />
               </div>
-              {/* <TxtInputMd
-            inputType="password"
-            inputLabel="Password"
-            placeholderText="janedoe12813279"
-          /> */}
               <div className="flex flex-col gap-y-0.5">
                 <label className="text-lg font-medium text-blue-dark">
                   Phone Number
@@ -148,10 +130,6 @@ const SignUpForm = () => {
                   placeholder="081xxxxxxxxx"
                 />
               </div>
-              {/* <TxtInputMd
-            inputLabel="Phone Number"
-            placeholderText="081xxxxxxxxx"
-          /> */}
             </div>
             {/* end - div for inputs */}
 
@@ -169,7 +147,6 @@ const SignUpForm = () => {
                   Create Account
                 </button>
               </div>
-              {/* <BtnFormBlue buttonName={"Create Account"} /> */}
             </div>
             {/* end - div for buttons */}
           </form>
@@ -180,7 +157,6 @@ const SignUpForm = () => {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        // message="Data has been Updated"
         key={vertical + horizontal}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
@@ -188,7 +164,7 @@ const SignUpForm = () => {
         </Alert>
       </Snackbar>
     </>
-  )
-}
+  );
+};
 
-export default SignUpForm
+export default SignUpForm;
