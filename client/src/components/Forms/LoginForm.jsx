@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useState } from "react";
 
@@ -6,7 +5,6 @@ import axios from "axios";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
-
 
 export default function Form() {
   const [inputs, setInputs] = useState({});
@@ -41,28 +39,20 @@ export default function Form() {
       const res = axios
         .post("http://localhost:8800/api/auth/login", inputs)
         .then(function (response) {
-          console.log(response);
-          console.log(response.data.token); //get token
           localStorage.setItem("accessToken", response.data.token);
-          localStorage.setItem("userID", response.data.user._id)
-          localStorage.setItem("userStatus", response.data.user.isAdmin)
-          // console.log("isi data user " + response.data.user._id);
+          localStorage.setItem("userID", response.data.user._id);
+          localStorage.setItem("userStatus", response.data.user.isAdmin);
           navigate("/");
-          // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
         })
         .catch(function (error) {
           console.log(error);
-          // console.log(error.message)
           if (error.message === "Request failed with status code 400") {
-            // setErrAlert(true)
-
             setAlert({ open: true, vertical: "bottom", horizontal: "right" });
           }
         });
     } catch (error) {
       console.log("error axios");
     }
-    // console.log("data = " + res)
   };
 
   return (
@@ -71,7 +61,6 @@ export default function Form() {
         className="flex flex-col justify-center 
                 shadow-2xl rounded-xl bg-white px-10 py-16 h-5/6 w-10/12 
                 lg:w-9/12 lg:pl-24 md:w-1/2 md:px-10"
-// <<<<<<< HEAD
       >
         {/* start - div for loginTitle */}
         <div id="loginTitle" className="flex gap-x-2">
@@ -100,10 +89,6 @@ export default function Form() {
                   placeholder="janedoe@xxxxx.com"
                 />
               </div>
-              {/* <TxtInputLg
-              inputLabel="Email"
-              placeholderText="janedoe@xxxxx.com"
-            /> */}
               <div className="flex flex-col gap-y-1">
                 <label className="text-lg font-medium text-blue-dark">
                   Password
@@ -117,11 +102,6 @@ export default function Form() {
                   placeholder="janedoe198461376817"
                 />
               </div>
-              {/* <TxtInputLg
-              inputType="password"
-              inputLabel="Password"
-              placeholderText="janedoe198461376817"
-            /> */}
             </div>
             {/* end - div for inputs */}
 
@@ -139,7 +119,6 @@ export default function Form() {
                   Log In
                 </button>
               </div>
-              {/* <BtnFormBlue buttonName={"Log In"} /> */}
               <div>
                 <button
                   onClick={() => {
@@ -154,27 +133,16 @@ export default function Form() {
                   SignUp
                 </button>
               </div>
-              {/* <BtnFormWhite buttonName={"SignUp"} /> */}
             </div>
             {/* end - div for buttons */}
-
-            {/* start - div for description - log in as admin */}
-            {/* <div className="flex justify-center items-center mt-4 lg:w-3/4">
-          <button className="text-xs text-blue-dark lg:w-3/4">
-            Log In as Admin
-          </button>
-        </div> */}
-            {/* end - div for description - log in as admin */}
           </form>
         </div>
         {/* end - div for inputs, buttons, descriptions */}
-
       </div>
       <Snackbar
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        // message="Data has been Updated"
         key={vertical + horizontal}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
