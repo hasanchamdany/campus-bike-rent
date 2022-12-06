@@ -12,8 +12,8 @@ import useFetch from "../../hooks/useFetch";
 import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
 
-import EditRentModal from "../../components/Modal/EditRentModal"
-import DeleteRentModal from "../../components/Modal/DeleteRentModal"
+import EditRentModal from "../../components/Modal/EditRentModal";
+import DeleteRentModal from "../../components/Modal/DeleteRentModal";
 
 const columns = [
   {
@@ -54,20 +54,6 @@ const columns = [
     align: "center",
     format: (value) => value.Moment().format("DD-MM-YYYY"),
   },
-  // {
-  //   id: "action",
-  //   label: "Action",
-  //   minWidth: 170,
-  //   align: "center",
-  //   // format: (value) => value.toLocaleString("en-US"),
-  // },
-  // {
-  //   id: 'density',
-  //   label: 'Density',
-  //   minWidth: 170,
-  //   align: 'right',
-  //   format: (value) => value.toFixed(2),
-  // },
 ];
 
 export default function StickyHeadTable() {
@@ -75,7 +61,7 @@ export default function StickyHeadTable() {
     "http://localhost:8800/api/booking"
   );
   console.log("data", data);
-  let [parseData, setParseData] = useState()
+  let [parseData, setParseData] = useState();
   let [editModal, setEditModal] = useState(false);
   let [deleteModal, setDeleteModal] = useState(false);
 
@@ -92,17 +78,13 @@ export default function StickyHeadTable() {
   };
 
   const onClickEdit = (data) => {
-    setEditModal(true)
-    console.log(data);
-    setParseData(data)
-    console.log(parseData)
+    setEditModal(true);
+    setParseData(data);
   };
 
   const onClickDelete = (data) => {
-    setDeleteModal(true)
-    console.log(data);
-    setParseData(data)
-    console.log(parseData)
+    setDeleteModal(true);
+    setParseData(data);
   };
 
   return (
@@ -144,15 +126,30 @@ export default function StickyHeadTable() {
                       <button onClick={() => onClickEdit(row)}>
                         <img src={EditIcon} />
                       </button>
-                      {editModal ? <>
-                      <EditRentModal state={editModal} setState={setEditModal} data={parseData} />
-                      </> : null}
-                      <button className="ml-1" onClick={() => onClickDelete(row)}>
+                      {editModal ? (
+                        <>
+                          <EditRentModal
+                            state={editModal}
+                            setState={setEditModal}
+                            data={parseData}
+                          />
+                        </>
+                      ) : null}
+                      <button
+                        className="ml-1"
+                        onClick={() => onClickDelete(row)}
+                      >
                         <img src={DeleteIcon} width="25px" />
                       </button>
-                      {deleteModal ? <>
-                      <DeleteRentModal state={deleteModal} setState={setDeleteModal} data={parseData} />
-                      </> : null}
+                      {deleteModal ? (
+                        <>
+                          <DeleteRentModal
+                            state={deleteModal}
+                            setState={setDeleteModal}
+                            data={parseData}
+                          />
+                        </>
+                      ) : null}
                     </TableCell>
                   </TableRow>
                 );
