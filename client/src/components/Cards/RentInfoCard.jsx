@@ -1,18 +1,18 @@
-import helloBike from "../../assets/Images/hello-bike.webp"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import ReturnModal from "../../components/Modal/ReturnModal"
+import helloBike from "../../assets/Images/hello-bike.webp";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import ReturnModal from "../../components/Modal/ReturnModal";
 
 const RentInfoCard = () => {
-  const userId = localStorage.getItem("userID")
-  const token = localStorage.getItem("accessToken")
-  const [rentState, setRentState] = useState(false)
+  const userId = localStorage.getItem("userID");
+  const token = localStorage.getItem("accessToken");
+  const [rentState, setRentState] = useState(false);
 
-  const [button, setButton] = useState(false)
+  const [button, setButton] = useState(false);
 
-  let [returnModal, setReturnModal] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [rentData, setRentData] = useState([])
+  let [returnModal, setReturnModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [rentData, setRentData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8800/api/booking/" + userId, {
@@ -21,32 +21,26 @@ const RentInfoCard = () => {
       .then(function (response) {
         //   const userData = response.data;
         if (response.data !== null) {
-          setRentData(response.data)
+          setRentData(response.data);
           if (response.data.returnedStatus) {
-            setRentState(true)
+            setRentState(true);
           } else {
-            setRentState(false)
+            setRentState(false);
           }
         } else if (response.data !== undefined) {
-          setButton(true)
+          setButton(true);
         }
-        console.log(response)
-        // console.log(rentData);
-        // setAlert({ open: true, vertical: "bottom", horizontal: "right" });
       })
       .catch(function (error) {
-        setLoading(true)
-        console.log(error)
-        return
-      })
-  }, [])
+        setLoading(true);
+        console.log(error);
+        return;
+      });
+  }, []);
 
   const onClickReturn = (data) => {
-    setReturnModal(true)
-    console.log(data)
-    // setParseData(data)
-    // console.log(parseData)
-  }
+    setReturnModal(true);
+  };
 
   return (
     <>
@@ -128,7 +122,7 @@ const RentInfoCard = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default RentInfoCard
+export default RentInfoCard;

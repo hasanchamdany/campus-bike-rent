@@ -15,13 +15,13 @@ const Rent = () => {
 
   useEffect(() => {
     try {
-      const token = localStorage.getItem("accessToken")
-      console.log( "ini token dari local storage: " + token );
-      if(!token){
-        navigate("/")
+      const token = localStorage.getItem("accessToken");
+
+      if (!token) {
+        navigate("/");
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   });
 
