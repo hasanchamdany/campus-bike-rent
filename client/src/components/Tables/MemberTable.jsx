@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react"
+import { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,8 +12,8 @@ import useFetch from "../../hooks/useFetch";
 import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
 
-import EditMemberModal from "../../components/Modal/EditMemberModal"
-import DeleteMemberModal from "../../components/Modal/DeleteMemberModal"
+import EditMemberModal from "../../components/Modal/EditMemberModal";
+import DeleteMemberModal from "../../components/Modal/DeleteMemberModal";
 
 const columns = [
   {
@@ -50,13 +50,6 @@ const columns = [
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-  //   {
-  //     id: "password",
-  //     label: "Password",
-  //     minWidth: 170,
-  //     align: "center",
-  //     format: (value) => value.toLocaleString("en-US"),
-  //   },
   {
     id: "phoneNumber",
     label: "Phone Number",
@@ -64,19 +57,11 @@ const columns = [
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-  // {
-  //   id: 'density',
-  //   label: 'Density',
-  //   minWidth: 170,
-  //   align: 'right',
-  //   format: (value) => value.toFixed(2),
-  // },
 ];
 
 export default function StickyHeadTable() {
   const { data, loading, error } = useFetch("http://localhost:8800/api/member");
-  console.log("data", data);
-  let [parseData, setParseData] = useState()
+  let [parseData, setParseData] = useState();
   let [editModal, setEditModal] = useState(false);
   let [deleteModal, setDeleteModal] = useState(false);
 
@@ -93,16 +78,12 @@ export default function StickyHeadTable() {
   };
 
   const onClickEdit = (data) => {
-    setEditModal(true)
-    console.log(data);
-    setParseData(data)
-    console.log(parseData)
+    setEditModal(true);
+    setParseData(data);
   };
   const onClickDelete = (data) => {
-    setDeleteModal(true)
-    console.log(data);
-    setParseData(data)
-    console.log(parseData)
+    setDeleteModal(true);
+    setParseData(data);
   };
 
   return (
@@ -144,15 +125,30 @@ export default function StickyHeadTable() {
                       <button onClick={() => onClickEdit(row)}>
                         <img src={EditIcon} />
                       </button>
-                      {editModal ? <>
-                      <EditMemberModal state={editModal} setState={setEditModal} data={parseData} />
-                      </> : null}
-                      <button className="ml-1" onClick={() => onClickDelete(row)}>
+                      {editModal ? (
+                        <>
+                          <EditMemberModal
+                            state={editModal}
+                            setState={setEditModal}
+                            data={parseData}
+                          />
+                        </>
+                      ) : null}
+                      <button
+                        className="ml-1"
+                        onClick={() => onClickDelete(row)}
+                      >
                         <img src={DeleteIcon} width="25px" />
                       </button>
-                      {deleteModal ? <>
-                      <DeleteMemberModal state={deleteModal} setState={setDeleteModal} data={parseData} />
-                      </> : null}
+                      {deleteModal ? (
+                        <>
+                          <DeleteMemberModal
+                            state={deleteModal}
+                            setState={setDeleteModal}
+                            data={parseData}
+                          />
+                        </>
+                      ) : null}
                     </TableCell>
                   </TableRow>
                 );

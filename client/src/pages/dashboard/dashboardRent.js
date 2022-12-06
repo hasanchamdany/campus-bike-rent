@@ -1,20 +1,18 @@
-import React, { useEffect } from "react"
-import Navbar from "../../components/Navbar/Navbar.jsx"
-import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx"
-import RentTable from "../../components/Tables/RentTable.jsx"
-import AdminMemberForm from "../../components/CRUDForm/AdminMemberForm.jsx"
-import useFetch from "../../hooks/useFetch"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
+import React, { useEffect } from "react";
+import Navbar from "../../components/Navbar/Navbar.jsx";
+import NavbarDash from "../../components/Navbar/NavbarDashboard.jsx";
+import RentTable from "../../components/Tables/RentTable.jsx";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const DashboardRent = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
-      const token = localStorage.getItem("accessToken")
+      const token = localStorage.getItem("accessToken");
       if (!token) {
-        navigate("/")
+        navigate("/");
       } else {
         const res = axios
           .get(
@@ -22,18 +20,17 @@ const DashboardRent = () => {
           )
           .then(function (response) {
             if (response.data.isAdmin === false) {
-              navigate("/")
+              navigate("/");
             }
           })
           .catch(function (error) {
-            console.log(error)
-            // console.log(error.message)
-          })
+            console.log(error);
+          });
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -43,16 +40,13 @@ const DashboardRent = () => {
           Hello, <span className=" text-orange">Admins</span>
         </div>
         <NavbarDash />
-        {/* <div className="max-w-[1240px] h-[100px]  mx-auto rounded-xl ">
-          <AdminMemberForm />
-        </div> */}
+
         <div className="max-w-[1256px] mx-auto px-4 pt-16 rounded-[30px]">
           <RentTable />
-          {/* <Membertable/> */}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default DashboardRent
+export default DashboardRent;

@@ -34,13 +34,11 @@ const AddBikeModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputs);
     axios
       .post("http://localhost:8800/api/bike", inputs, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(function (response) {
-        console.log(response);
         setAlert({ open: true, vertical: "bottom", horizontal: "right" });
       })
       .catch(function (error) {
@@ -128,7 +126,6 @@ const AddBikeModal = (props) => {
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         onClose={handleClose}
-        // message="Data has been Updated"
         key={vertical + horizontal}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>

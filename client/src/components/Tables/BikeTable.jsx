@@ -13,7 +13,7 @@ import DeleteIcon from "../../assets/icon/delete-icon.svg";
 import EditIcon from "../../assets/icon/edit-icon.svg";
 
 import EditBikeModal from "../../components/Modal/EditBikeModal";
-import DeleteBikeModal from "../../components/Modal/DeleteBikeModal"
+import DeleteBikeModal from "../../components/Modal/DeleteBikeModal";
 
 const columns = [
   {
@@ -51,7 +51,7 @@ const columns = [
 export default function StickyHeadTable() {
   const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
   console.log("data", data);
-  let [parseData, setParseData] = useState()
+  let [parseData, setParseData] = useState();
   let [editModal, setEditModal] = useState(false);
   let [deleteModal, setDeleteModal] = useState(false);
 
@@ -68,22 +68,12 @@ export default function StickyHeadTable() {
   };
 
   const onClickEdit = (data) => {
-    setEditModal(true)
-    console.log(data);
-    setParseData(data)
-    console.log(parseData)
-    // return(
-    //   <EditBikeModal state={editModal} setState={setEditModal} placeholder={data} />
-    // )
+    setEditModal(true);
+    setParseData(data);
   };
   const onClickDelete = (data) => {
-    setDeleteModal(true)
-    console.log(data);
-    setParseData(data)
-    console.log(parseData)
-    // return(
-    //   <EditBikeModal state={editModal} setState={setEditModal} placeholder={data} />
-    // )
+    setDeleteModal(true);
+    setParseData(data);
   };
 
   return (
@@ -125,16 +115,31 @@ export default function StickyHeadTable() {
                       <button onClick={() => onClickEdit(row)}>
                         <img src={EditIcon} />
                       </button>
-                      
-                      {editModal ? <>
-                      <EditBikeModal state={editModal} setState={setEditModal} data={parseData} />
-                      </> : null}
-                      <button className="ml-1" onClick={() => onClickDelete(row)}>
+
+                      {editModal ? (
+                        <>
+                          <EditBikeModal
+                            state={editModal}
+                            setState={setEditModal}
+                            data={parseData}
+                          />
+                        </>
+                      ) : null}
+                      <button
+                        className="ml-1"
+                        onClick={() => onClickDelete(row)}
+                      >
                         <img src={DeleteIcon} width="25px" />
                       </button>
-                      {deleteModal ? <>
-                      <DeleteBikeModal state={deleteModal} setState={setDeleteModal} data={parseData} />
-                      </> : null}
+                      {deleteModal ? (
+                        <>
+                          <DeleteBikeModal
+                            state={deleteModal}
+                            setState={setDeleteModal}
+                            data={parseData}
+                          />
+                        </>
+                      ) : null}
                     </TableCell>
                   </TableRow>
                 );
