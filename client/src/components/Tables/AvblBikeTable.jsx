@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react"
-import Paper from "@mui/material/Paper"
-import Table from "@mui/material/Table"
-import TableBody from "@mui/material/TableBody"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableHead from "@mui/material/TableHead"
-import TablePagination from "@mui/material/TablePagination"
-import TableRow from "@mui/material/TableRow"
-import useFetch from "../../hooks/useFetch"
-import DeleteIcon from "../../assets/icon/delete-icon.svg"
-import EditIcon from "../../assets/icon/edit-icon.svg"
+import React, { useState, useEffect } from "react";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import useFetch from "../../hooks/useFetch";
+import DeleteIcon from "../../assets/icon/delete-icon.svg";
+import EditIcon from "../../assets/icon/edit-icon.svg";
 
-import RentModal from "../../components/Modal/RentModal.jsx"
+import RentModal from "../../components/Modal/RentModal.jsx";
 
-// import RentBikeModal from "../../components/Modal/RentBikeModal.jsx";
-
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 
 const columns = [
   {
@@ -26,8 +24,8 @@ const columns = [
     inputFilterable: true,
     sortable: true,
     format: (value) => {
-      console.log("here", value)
-      return value ? "true" : "false"
+      console.log("here", value);
+      return value ? "true" : "false";
     },
   },
   {
@@ -48,55 +46,37 @@ const columns = [
     sortable: true,
     format: (value) => value.toLocaleString("en-US"),
   },
-]
+];
 
 export default function StickyHeadTable(props) {
-  const { data, loading, error } = useFetch("http://localhost:8800/api/bike")
-  console.log("data", data)
-  console.log(props.filter)
-  const [filteredData, setFilteredData] = useState(data)
-  const [rentModal, setRentModal] = useState(false)
-  let [parseData, setParseData] = useState()
+  const { data, loading, error } = useFetch("http://localhost:8800/api/bike");
+  // console.log("data", data)
+  // console.log(props.filter)
+  const [filteredData, setFilteredData] = useState(data);
+  const [rentModal, setRentModal] = useState(false);
+  let [parseData, setParseData] = useState();
 
-  let filtered = data.filter((t) => t.location === props.filter.value)
-  console.log(filtered)
+  let filtered = data.filter((t) => t.location === props.filter.value);
+  // console.log(filtered)
 
-  const [page, setPage] = React.useState(0)
-  const [rowsPerPage, setRowsPerPage] = React.useState(10)
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage)
-  }
+    setPage(newPage);
+  };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
-  }
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   const onClickRent = (data) => {
-    setRentModal(true)
-    console.log(data)
-    setParseData(data)
-    console.log(parseData)
-    // return(
-    //   <EditBikeModal state={editModal} setState={setEditModal} placeholder={data} />
-    // )
-  }
-
-  {
-    /*const [showModal, setShowModal] = useState(false);
-  useEffect(() => setShowModal(false), []);
-  useEffect(() => {
-    const close = (e) => {
-      if (e.keyCode === "Escape") {
-        // e.onCloseModal()
-        setShowModal(false);
-      }
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, []);*/
-  }
+    setRentModal(true);
+    console.log(data);
+    setParseData(data);
+    console.log(parseData);
+  };
 
   return (
     <div>
@@ -130,25 +110,19 @@ export default function StickyHeadTable(props) {
                       key={row.code}
                     >
                       {columns.map((column) => {
-                        const value = row[column.id]
+                        const value = row[column.id];
                         return (
                           <TableCell key={column.id} align={column.align}>
-                            {
-                              columns.filter(
-                                (value) => value.location === "Perpustakaan UGM"
-                              )
-                              //.map(task => <li key={task.taskId}>{task.taskName}</li>)
-                              //column.filter &&
-                              //(column.availability === "false" ||
-                              //column.borrowPeriod === "0")
-                            }
+                            {columns.filter(
+                              (value) => value.location === "Perpustakaan UGM"
+                            )}
                             {column.format &&
                             (typeof value === "number" ||
                               typeof value === "boolean")
                               ? column.format(value)
                               : value}
                           </TableCell>
-                        )
+                        );
                       })}
                       <TableCell>
                         <button
@@ -168,7 +142,7 @@ export default function StickyHeadTable(props) {
                         ) : null}
                       </TableCell>
                     </TableRow>
-                  )
+                  );
                 })}
             </TableBody>
           </Table>
@@ -184,5 +158,5 @@ export default function StickyHeadTable(props) {
         />
       </Paper>
     </div>
-  )
+  );
 }
