@@ -13,8 +13,10 @@
 [PPT-frontend](https://www.canva.com/design/DAFSHcR5N8s/hdjSd_qLRkWLqRMc6kpfMQ/view?utm_content=DAFSHcR5N8s&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu)
 
 ## 🌐 Deployment 
-[https://bisa-frontend.vercel.app/](https://bisa-frontend.vercel.app/)
-<br> Beberapa pages perlu akun admin (di ppt)
+Link: [https://bisa-frontend.vercel.app/](https://bisa-frontend.vercel.app/)
+<br><br> Note: Page dashboard hanya bisa diakses dengan akun admin (ada di ppt & email)
+<br><br> Deployment back-end: [https://bisa-backend.vercel.app](https://bisa-backend.vercel.app)
+
 
 ## ⚡ How to Run ?
 ### Run Backend
